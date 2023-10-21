@@ -1,0 +1,33 @@
+.login{
+  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
+}
+@media screen and (max-width: 880px) {
+  .imgright {
+    display: none;
+  }
+  .desktop {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 881px) {
+  .desktop{
+    display: flex;
+    align-items: center;
+  }
+  .login {
+    height: 100vh;
+    width: 100%;
+    min-width: 26rem;
+  }
+
+}
+.imgright {
+  width: 100%;
+  height: 100vh;
+}
