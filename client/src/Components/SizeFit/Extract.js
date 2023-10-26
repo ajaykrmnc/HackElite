@@ -3,7 +3,9 @@ import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import axios from 'axios'
+import { MESH } from '../../config';
 const renderer = new THREE.WebGLRenderer();
+
 const MeshComponent = () => {
   const [objData, setObjData] = useState(null);
   const options = {
@@ -11,7 +13,7 @@ const MeshComponent = () => {
     url: 'https://api.digidoppel.com/ganymede/measurement',
     headers: {
       accept: '*/*',
-      Authorization: 'eyJraWQiOiJ6MHhcL1RPeUlTYkRyZGExYUVOQ0lxMFY3Z2E0SlpXWXlrWnJlV1BVUGhybz0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI4ZWE1N2MzNC1lOThhLTRiNWItYmEzNy1mOTI2MTAyMDYxNTciLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLmV1LWNlbnRyYWwtMS5hbWF6b25hd3MuY29tXC9ldS1jZW50cmFsLTFfekl5R1BxRnJsIiwiY29nbml0bzp1c2VybmFtZSI6IjhlYTU3YzM0LWU5OGEtNGI1Yi1iYTM3LWY5MjYxMDIwNjE1NyIsImF1ZCI6ImI4cmIzZWkxcWR2OW9ramtodDBqbHJvMmkiLCJldmVudF9pZCI6IjYxZGZjODE1LTk2ZGMtNDgyNi05OGUyLWUyZTdmZGM3MmFiMSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjk3MzU5MjgyLCJuYW1lIjoiQWpheSBLdW1hciIsImV4cCI6MTY5ODI1MzgxMCwiaWF0IjoxNjk4MjEwNjEwLCJlbWFpbCI6ImFqYXlrZzY5MTdAZ21haWwuY29tIn0.EOvDXWXjgMFCeopD59kC0iGK8dz_kPR47Pf19EuExzJheoUyr4AL4iB_fl57dD7NDwImrn28SNFaNpbwzD14n0CsZJVxKdLDpQFrqjZWRLgRvkUD2ZmBPca0QxxoJf6qaaVOcnZKe2z_yVG0saYpHxai68h2F8xbZ-ZVzuqltOnDkFO_WlnsSYhUVbOgYvcmZp84akXjoLbkShWVXgYHZk_GcC8iW8WEGpAS0xsu0igoj2tHE-T2Tqrx2IM7NQWFCl0oadSXB4rb5A2m4FsTBRonE-eDURhJoh7AyCkBUuZbFKCTuglOhMBN9xyVLMC7fzpNQS3mmrYLoswALUUAXA'
+      Authorization: `${MESH}`
     }
   };
   useEffect(() => {

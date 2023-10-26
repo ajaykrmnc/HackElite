@@ -1,5 +1,5 @@
 import React from 'react';
-import MeshComponent from './MeshComponent';
+import MeshComponent from './Extract';
 import './App.css'; // Assuming you have a CSS file for styling
 
 function Combined() {
