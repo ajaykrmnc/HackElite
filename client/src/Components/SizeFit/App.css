@@ -1,17 +1,20 @@
 .app-container {
     display: flex;
     height: 100vh;
-  }
-  
-  .left-container {
+    background-color: #f0f0f0;
+}
+
+.left-container {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .right-container {
+    background-color: #3498db;
+}
+
+.right-container {
     flex: 1;
     padding: 20px;
-  }
-  
+    background-color: #ffffff;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.1);
+}
