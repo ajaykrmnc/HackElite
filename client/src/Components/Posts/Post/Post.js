@@ -41,7 +41,7 @@ const Post = (props) => {
         }
         <p>{clothType}</p>
         </div>
-
+        
       </div>
     </div>
   );

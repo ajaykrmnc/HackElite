@@ -134,7 +134,7 @@ const Login = () => {
           <button className="mt-3 p-0 btn btn-light" onClick={switchMode}>
             {isSignup
               ? "Already have an account? Sign in"
-              : "New to Memories? Sign Up"}
+              : "New to Cloud Closet? Sign Up"}
           </button>
         </div>
       </div>

@@ -6,9 +6,10 @@ import Form from "./Components/Form/Form";
 import axios from 'axios';
 import Navbar from './Components/Navbar/navbar';
 import Sidebar from './Components/Sidebar/Sidebar'
+import { Link } from 'react-router-dom';
 
 const Home = ({ currentUser }) => {
-    const url = "http://localhost:3000/posts";
+    const url = "http://localhost:5000/posts";
     const [posts, setPosts] = useState([]);
     const [tags, setTags] = useState([]);
     const [tops,setTops]  = useState([]);
@@ -105,24 +106,49 @@ const Home = ({ currentUser }) => {
             <div>
                 <div className="home-page">
                     <div className="posts-side">
-                    <div>
-                       <h2>Tops</h2>
+                    <div className = "tops">
+                       <h3 className = "text-primary">Tops</h3>
+                       <hr/>
                        <Posts posts={tops} deletepost={deletePost} currentUser={currentUser} />
                       </div>
-                      <div>
-                        <h2>Bottoms</h2>
+                      <div className = "bottoms">
+                        <h3 className = "text-primary">Bottoms</h3>
+                        <hr />
                         <Posts posts={bottoms} deletepost={deletePost} currentUser={currentUser} />
                       </div>
-                      <div>
-                        <h2>Accessories</h2>
+                      <div className = 'accessories'>
+                        <h3 className = "text-primary">Accessories</h3>
+                        <hr />
                         <Posts posts={accessories} deletepost={deletePost} currentUser={currentUser} />
                       </div>
-                    </div>
+                      <div className = "nice-ui-container">
+                        <h3>Todays Recommendations </h3>
+                        <Link to="/recommendation">
+                            <button className = "btn btn-secondary">Go</button>
+                        </Link>
+                      </div>
+                      <div className = "nice-ui-container">
+                        <h3>Calculate your Ecometer results</h3>
+                        <Link to="/dashboard">
+                            <button className = "btn btn-secondary">Click Here</button>
+                        </Link>
+                      </div>
+                      <div className = "nice-ui-container">
+                        <h3>Create your virtual Avatar</h3>
+                        <Link to="/map">
+                            <button className = "btn btn-secondary">Click Here</button>
+                        </Link>
+                      </div>
+
+                      </div>
                     <div className="sidebar">
                         <Sidebar tags={tags} handleTagClick={handleTagClick} />
                         <Form addpost={addPost} currentUser={currentUser} />
                     </div>
                 </div>
+            </div>
+            <div>
+
             </div>
         </>
     );

@@ -6,7 +6,9 @@ import { Routes, Route, Link, BrowserRouter,Navigate } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 import MeshComponent from "./Components/SizeFit/Extract";
-
+import Intro from "./Intro";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import OutfitRecommendation from "./Components/Reccomendation/OutfitRecommendation";
 
 function App() {
     const {currentUser} = useContext(AuthContext)
@@ -35,8 +37,24 @@ function App() {
                 </RequireAuth>
               }
             />
-  
-
+            <Route path = '/home' element = {
+                <RequireAuth>
+                  <Intro />
+                </RequireAuth>
+              }
+            />
+            <Route path = '/dashboard' element = {
+                <RequireAuth>
+                  <Dashboard />
+                </RequireAuth>
+              }
+            />
+            <Route path = '/recommendation' element = {
+                <RequireAuth>
+                  <OutfitRecommendation />
+                </RequireAuth>
+              }
+            />
           </Route>
           </Routes>
         </BrowserRouter>

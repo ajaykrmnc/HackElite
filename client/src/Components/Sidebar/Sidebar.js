@@ -12,7 +12,6 @@ const Sidebar = ({ tags, handleClick }) => {
           </div>
         ))}
       </div>
-      <button className="button">Click Me</button>
     </div>
   );
 };

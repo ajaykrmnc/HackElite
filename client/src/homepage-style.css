@@ -2,7 +2,7 @@
 
 .home-page {
     display: flex;
-    /* margin: 20px; */
+    margin: 20px;
   }
   .posts-side {
     flex: 1;
@@ -10,8 +10,7 @@
     max-height: 700px; /* Adjust the maximum height as needed */
   }
   
-  .sidebar {
-    flex-shrink: 0; /* Ensure the form does not shrink */ 
+  .sidebar { /* Ensure the form does not shrink */ 
     position: sticky;
     top: 20px; /* Adjust the top distance from the viewport */
     margin-left: 20px; /* Adjust spacing as needed */
@@ -66,6 +65,12 @@
   
   .sidebar li small {
     color: #666;
+  }
+  .nice-ui-container {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
   
   

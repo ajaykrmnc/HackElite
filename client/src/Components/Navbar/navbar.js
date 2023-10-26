@@ -23,27 +23,18 @@ const Navbar = () => {
     dispatch({ type: "LOGIN", payload: user });
   };
 
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
 
   useEffect(() => {
-    showButton();
   }, []);
 
-  window.addEventListener("resize", showButton);
 
   return (
     <>
       <>
-        <div className="header jusitfy-conent-between ">
+        <div className="header ">
           <div className="container saradiv my-2">
             <div className="d-flex navlogo">
-              <h1 className="text-light">Closet</h1>
+              <h1 className="text-light">Cloud Closet</h1>
               <img
                 src="LOGO.png"
                 className="mx-2 imag"
@@ -51,24 +42,7 @@ const Navbar = () => {
                 alt="..."
               />
             </div>
-            {button && (
-              <>
-                <div className="d-flex align-items-center">
-                  <Link className="link" to="/map">
-                    Here We Go ⚡
-                  </Link>
-                  {!user && (
-                    <button
-                      className="btn btn-outline-light"
-                      onClick={handleLogin}
-                    >
-                      Login
-                    </button>
-                  )}
-                </div>
-              </>
-            )}
-            {!button && (
+            {(
               <>
                 <div className="d-flex listphoto justify-content-between">
                   <button
@@ -77,16 +51,16 @@ const Navbar = () => {
                     style={{ zIndex: "2" }}
                   >
                     <img
-                      src="list .png"
+                      src="list.png"
                       style={{ width: "2rem" }}
                       alt="..."
                     />
                   </button>
                   <div className="d-flex align-items-center">
-                    <img src={user.photoURL} className="aadmi" alt="..." />
-                    <button onClick={handleLogout} className="btn btn-light">
-                      Logout
+                  <button onClick={handleLogout} className="btn btn-light">
+                      Logout &nbsp;
                     </button>
+                    &nbsp;<img src={user.photoURL} className="aadmi" alt="..." />
                   </div>
                 </div>
               </>
