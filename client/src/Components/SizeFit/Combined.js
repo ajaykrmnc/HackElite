@@ -1,12 +1,13 @@
 import React from 'react';
 import MeshComponent from './Extract';
+import FormComponent from './formComenponent';
 import './App.css'; // Assuming you have a CSS file for styling
 
 function Combined() {
   return (
     <div className="app-container">
       <div className="left-container">
-        <MeshComponent />
+        <MeshComponent width={800} height={600}/>
       </div>
       <div className="right-container">
         <FormComponent />
@@ -15,4 +16,4 @@ function Combined() {
   );
 }
 
-export default App;
+export default Combined;

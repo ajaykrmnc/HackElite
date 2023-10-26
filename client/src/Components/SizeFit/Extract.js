@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -6,7 +6,9 @@ import axios from 'axios'
 import { MESH } from '../../config';
 const renderer = new THREE.WebGLRenderer();
 
-const MeshComponent = () => {
+const MeshComponent = ({width,height}) => {
+  const containerRef = useRef();
+
   const [objData, setObjData] = useState(null);
   const options = {
     method: 'GET',
@@ -16,6 +18,7 @@ const MeshComponent = () => {
       Authorization: `${MESH}`
     }
   };
+
   useEffect(() => {
     const fetchObjData = async () => {
       try {
@@ -34,64 +37,67 @@ const MeshComponent = () => {
 
   useEffect(() => {
     if (objData) {
-      const container = document.getElementById('canvas-container');
-      container.appendChild(renderer.domElement);
+      const container = containerRef.current;
+
+
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+      camera.position.set(0, 0, 100);
+
       const raycaster = new THREE.Raycaster();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(width,height);
+      renderer.setClearColor(0xffffff); 
+      container.appendChild(renderer.domElement);
+
 
       const loader = new OBJLoader();
       const objMesh = loader.parse(objData);
-      const light = new THREE.AmbientLight(0xffffff, 3);
-      scene.add(light);
-      const material = new THREE.MeshPhongMaterial({ color: 0xffddf, specular: 0x111111, shininess: 25,wireFrame: true });
+      objMesh.scale.set(0.4, 0.4, 0.4);
+      objMesh.position.set(1, -30, 0);
+      console.log('Current Position:', objMesh.position.x, objMesh.position.y, objMesh.position.z);
+
+      const material = new THREE.MeshStandardMaterial({ color: 0xffffff }); // Use MeshStandardMaterial for more realistic shading
+
       objMesh.traverse((child) => {
         if (child instanceof THREE.Mesh) {
           child.material = material;
         }
       });
+  
+      const light = new THREE.DirectionalLight(0xffffff, 1); // Add a directional light
+      light.position.set(1, 1, 1).normalize();
+      scene.add(light);  
 
       scene.add(objMesh);
+      const controls = new OrbitControls(camera, renderer.domElement);
+    controls.addEventListener('change', () => renderer.render(scene, camera));
 
-    let moved = false;
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.minDistance = 50;
-    controls.maxDistance = 100;
+    const onWindowResize = () => {
+      const aspect = width / height;
+      camera.aspect = aspect;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
 
-    controls.addEventListener('change', function () {
-      moved = true;
-    });
+    window.addEventListener('resize', onWindowResize, false);
 
-    window.addEventListener('pointerdown', function () {
-      moved = false;
-    });
-    window.addEventListener('resize', onWindowResize, false)
-    function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight
-        camera.updateProjectionMatrix()
-        renderer.setSize(window.innerWidth, window.innerHeight)
-    }
+    scene.add(objMesh);
 
     const animate = function () {
       requestAnimationFrame(animate);
+      controls.update(); // Add this line to update the controls
       renderer.render(scene, camera);
     };
 
-      animate();
+    animate();
 
-      return () => {
-      };
+    return () => {
+      window.removeEventListener('resize', onWindowResize);
+    };
     }
   }, [objData]);
 
-  return <div id = "canvas-container"  style={{
-    width: '300px',   // Set the desired width
-    height: '400px',  // Set the desired height
-    border: '1px solid #ccc', // Add border for visibility
-    position: 'relative', // Positioning for proper rendering
-    // overflow: 'hidden'
-  }} ref={(mount) => { mount && mount.appendChild(renderer.domElement) }} />;
+  return <div ref={containerRef} />;
 };
 
 export default MeshComponent;
