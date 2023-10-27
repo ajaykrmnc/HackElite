@@ -1,0 +1,16 @@
+ 
+  .c-item {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+.c-item .c-skeleton-square {
+    height: 500px;
+    padding: 20 px;
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  

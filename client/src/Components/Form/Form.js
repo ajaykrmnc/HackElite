@@ -42,7 +42,7 @@ class AddPost extends Component {
   render() {
     const { creator,clothType,title, message,tags, category } = this.state;
     return (
-      <div className="p-4 m-2 h-custom bg-light form-body" style={{ width: "22rem"}}>
+      <div className="p-4 m-2 h-custom bg-light form-body">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group input-group-lg">
             <h3 className="text-center">Add Item to Wardrobe</h3>

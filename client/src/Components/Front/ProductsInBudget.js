@@ -14,8 +14,8 @@ import budgetImgOffer10 from "assets/images/b10.png";
 const ProductsInBudget = () => {
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-4">
+      <div className="row budget">
+        <div className="col-lg-3">
           <div className="boxImg1">
             <div>
               <img
@@ -34,7 +34,7 @@ const ProductsInBudget = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-4">
+        <div className="col-lg-3">
           <div className="boxImg1">
             <div>
               <img
@@ -53,7 +53,7 @@ const ProductsInBudget = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-4">
+        <div className="col-lg-3">
           <div className="boxImg1">
             <div>
               <img
@@ -72,7 +72,7 @@ const ProductsInBudget = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-4">
+        <div className="col-lg-3">
           <div className="boxImg1">
             <div>
               <img
@@ -90,7 +90,8 @@ const ProductsInBudget = () => {
               />
             </div>
           </div>
-          <div className="col-md-4">
+        </div>
+        {/* <div className="col-lg-3">
           <div className="boxImg1">
             <div>
               <img
@@ -108,8 +109,7 @@ const ProductsInBudget = () => {
               />
             </div>
           </div>
-        </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

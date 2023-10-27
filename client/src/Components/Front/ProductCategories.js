@@ -18,7 +18,7 @@ const ProductCategories = () => {
     <div className="container">
       <h2 className="productDeal">CATEGORIES TO BAG</h2>
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-lg-2">
           <div className="boxImg">
             <div>
               <img src={roundImg1} alt="" className="productImg1" width="240" />
@@ -35,7 +35,7 @@ const ProductCategories = () => {
           </div>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-lg-2">
           <div className="boxImg">
             <div>
               <img src={roundImg2} alt="" className="productImg1" width="240" />
@@ -52,7 +52,7 @@ const ProductCategories = () => {
           </div>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-lg-2">
           <div className="boxImg">
             <div>
               <img src={roundImg3} alt="" className="productImg1" width="240" />
@@ -69,7 +69,7 @@ const ProductCategories = () => {
           </div>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-lg-2">
           <div className="boxImg">
             <div>
               <img src={roundImg4} alt="" className="productImg1" width="240" />
@@ -86,7 +86,7 @@ const ProductCategories = () => {
           </div>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-lg-2">
           <div className="boxImg">
             <div>
               <img src={roundImg5} alt="" className="productImg1" width="240" />
@@ -104,7 +104,7 @@ const ProductCategories = () => {
           </div>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-lg-2">
           <div className="boxImg">
             <div>
               <img src={roundImg6} alt="" className="productImg1" width="240" />

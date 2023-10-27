@@ -10,46 +10,46 @@ const ProductsBestDeal = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-sm-6">
+        <div className="col-lg-3">
           <img
             src={bestDealImg1}
             alt=""
             className="ProductOffer"
-            width="280"
+            width = "280"
           />
         </div>
-        <div className="col-sm-6">
+        <div className="col-lg-3">
           <img
             src={bestDealImg2}
             alt=""
             className="ProductOffer"
-            width="280"
+            width = "280"
           />
         </div>
-        <div className="col-sm-6">
+        <div className="col-lg-3">
           <img
             src={bestDealImg3}
             alt=""
             className="ProductOffer"
-            width="280"
+            width = "280"
           />
         </div>
-        <div className="col-sm-6">
+        <div className="col-lg-3">
           <img
             src={bestDealImg4}
             alt=""
             className="ProductOffer"
-            width="280"
+            width = "280"
           />
         </div>
-        <div className="col-sm-6">
+        {/* <div className="col-lg-3">
           <img
             src={bestDealImg5}
             alt=""
             className="ProductOffer"
-            width="280"
+            width = "280"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
 import React from "react";
-import "./Footer.scss";
+import "./Footer.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import GoogleApp from "../Images/Google.png";
-import AppStore from "../Images/app store.png";
+import GoogleApp from "assets/images/Google.png";
+import AppStore from "assets/images/app store.png";
 import { faUndo, faTh } from '@fortawesome/free-solid-svg-icons';
 import Footer2 from "./Footer2";
 

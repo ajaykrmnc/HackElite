@@ -16,9 +16,8 @@ const Footer2 = () => {
       </p>
       <hr />
       <center className="que2">
-        © 2021 www.myntra.com (ClonedByDolly) All rights reserved.
+        © 2023 www.myntra.com (Ajay Cloned) All rights reserved.
       </center>
-      <hr />
     </div>
   );
 };

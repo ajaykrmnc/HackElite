@@ -4,7 +4,11 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import axios from 'axios'
 import { MESH } from '../../config';
+import MeshSkeleton from 'Components/Loading/MeshLoading';
+import './Extract.css'
+
 const renderer = new THREE.WebGLRenderer();
+
 
 const MeshComponent = ({width,height}) => {
   const containerRef = useRef();
@@ -97,7 +101,11 @@ const MeshComponent = ({width,height}) => {
     }
   }, [objData]);
 
-  return <div ref={containerRef} />;
+  return <>
+     {
+       (objData) ? <div className = "Mesh" ref={containerRef} /> : <MeshSkeleton/>
+     }
+  </>;
 };
 
 export default MeshComponent;

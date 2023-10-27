@@ -3,13 +3,13 @@ import './sidebar.css';
 
 const Sidebar = ({ tags, handleClick }) => {
   return (
-    <div className="sidebar">
-      <h2 className="sidebar-title">Tags</h2>
-      <div className="tags-container">
+    <div className="">
+      <h2 className="">Tags</h2>
+      <div className="">
         {tags.map((tag, index) => (
-          <div key={index} className="tag" onClick={() => handleClick(tag)}>
+          <button key={index} className="btn btn-rounded" onClick={() => handleClick(tag)}>
             {tag}
-          </div>
+          </button>
         ))}
       </div>
     </div>

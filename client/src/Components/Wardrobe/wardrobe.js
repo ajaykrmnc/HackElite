@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Posts from "./Posts/Posts";
-import "./homepage-style.css";
-import Form from "./Form/Form";
+import Posts from "../Posts/Posts";
+import "./stylehome.css";
+import Form from "../Form/Form";
 import axios from "axios";
-import Navbar from "./Navbar/navbar";
-import Sidebar from "./Sidebar/Sidebar";
+import Sidebar from "../Sidebar/Sidebar";
 import { Link } from "react-router-dom";
 
-const Home = ({ currentUser }) => {
+const Wardrobe = ({ currentUser }) => {
   const url = "http://localhost:5000/posts";
   const [posts, setPosts] = useState([]);
   const [tags, setTags] = useState([]);
@@ -101,65 +99,68 @@ const Home = ({ currentUser }) => {
   }, [posts]);
   return (
     <>
-      <Navbar user={currentUser} />
-      <div>
-        <div className="home-page">
-          <div className="posts-side">
-            <div className="tops">
-              <h3 className="text-primary">Tops</h3>
-              <hr />
-              <Posts
-                posts={tops}
-                deletepost={deletePost}
-                currentUser={currentUser}
-              />
-            </div>
-            <div className="bottoms">
-              <h3 className="text-primary">Bottoms</h3>
-              <hr />
-              <Posts
-                posts={bottoms}
-                deletepost={deletePost}
-                currentUser={currentUser}
-              />
-            </div>
-            <div className="accessories">
-              <h3 className="text-primary">Accessories</h3>
-              <hr />
-              <Posts
-                posts={accessories}
-                deletepost={deletePost}
-                currentUser={currentUser}
-              />
-            </div>
-            <div className="nice-ui-container">
-              <h3>Todays Recommendations </h3>
-              <Link to="/recommendation">
-                <button className="btn btn-secondary">Go</button>
-              </Link>
-            </div>
-            <div className="nice-ui-container">
-              <h3>Calculate your Ecometer results</h3>
-              <Link to="/dashboard">
-                <button className="btn btn-secondary">Click Here</button>
-              </Link>
-            </div>
-            <div className="nice-ui-container">
-              <h3>Create your virtual Avatar</h3>
-              <Link to="/map">
-                <button className="btn btn-secondary">Click Here</button>
-              </Link>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <div className="posts-side">
+              <div className="tops">
+                <h3 className="text-primary">Tops</h3>
+                <hr />
+                <Posts
+                  posts={tops}
+                  deletepost={deletePost}
+                  currentUser={currentUser}
+                />
+              </div>
+              <div className="bottoms">
+                <h3 className="text-primary">Bottoms</h3>
+                <hr />
+                <Posts
+                  posts={bottoms}
+                  deletepost={deletePost}
+                  currentUser={currentUser}
+                />
+              </div>
+              <div className="accessories">
+                <h3 className="text-primary">Accessories</h3>
+                <hr />
+                <Posts
+                  posts={accessories}
+                  deletepost={deletePost}
+                  currentUser={currentUser}
+                />
+              </div>
+              <div className="nice-ui-container">
+                <h3>Todays Recommendations </h3>
+                <Link to="/recommendation">
+                  <button className="btn btn-secondary">Go</button>
+                </Link>
+              </div>
+              <div className="nice-ui-container">
+                <h3>Calculate your Ecometer results</h3>
+                <Link to="/dashboard">
+                  <button className="btn btn-secondary">Click Here</button>
+                </Link>
+              </div>
+              <div className="nice-ui-container">
+                <h3>Create your virtual Avatar</h3>
+                <Link to="/map">
+                  <button className="btn btn-secondary">Click Here</button>
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="sidebar">
-            <Sidebar tags={tags} handleTagClick={handleTagClick} />
-            <Form addpost={addPost} currentUser={currentUser} />
+          <div className="col-lg-3">
+              <Sidebar tags={tags} handleTagClick={handleTagClick} />
+              <Form addpost={addPost} currentUser={currentUser} />
+            </div>
           </div>
+          <div>
+
         </div>
       </div>
-      <div></div>
     </>
   );
 };
 
-export default Home;
+export default Wardrobe;

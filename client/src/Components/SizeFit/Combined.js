@@ -7,7 +7,7 @@ function Combined() {
   return (
     <div className="app-container">
       <div className="left-container">
-        <MeshComponent width={800} height={600}/>
+        <MeshComponent width={650} height={486}/>
       </div>
       <div className="right-container">
         <FormComponent />
