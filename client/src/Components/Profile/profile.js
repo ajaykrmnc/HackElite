@@ -6,8 +6,14 @@ import { Link } from "react-router-dom";
 import { API } from "config";
 
 const Profile = ({ user }) => {
-
-
+  const client = {
+    Navigatorame: "Ajay",
+    email: "ajaykg6917@gmail.com",
+    Address: "VILL + PO + PS - PIRO Bhojpur Bihar",
+    MobNo: "74928720XX",
+    count: '0',
+  }
+  
   return (
     <>
         <div class="container" style={{ marginTop: "1rem" }}>
@@ -15,9 +21,9 @@ const Profile = ({ user }) => {
             <div class="col-4">
               <div className="card text-center mt-3">
               <div className='d-flex justify-content-center'>
-                 <div className="" style={{width: "20rem" }}>
+                 <div className="">
                      <div class="">
-                         <img class="profile-img" src={user.photoURL} alt='img2'/>
+                         <img class="profile-img" src={user?.photoURL} alt='img2'/>
                      </div>
                     <div className="cardbody">
                         <h5 className="cardtitle">Name: {client.Name}</h5>
@@ -29,36 +35,29 @@ const Profile = ({ user }) => {
                     </div>
                  </div>
                  </div>
-                <hr />
-
-                <div className="card-body">
-                  <h5 className="">PURCHASING DETAILS</h5>
-                </div>
                 <div className="card-footer text-muted">
                   last updated - 2 days ago
                 </div>
               </div>
             </div>
             <div class="col-8">
-              <div className="card mt-3">
-                <img
-                  src="https://img.freepik.com/free-vector/electric-car-concept-illustration_114360-927.jpg?w=900"
-                  className="card-img-top"
-                  alt="..."
-                  style={{ height: "25rem", objectFit: "cover" }}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">PURCHASING HISTORY</h5>
-                  <p className="card-text">Here all your purchasing Items.</p>
-                </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">An item</li>
-                  <li className="list-group-item">A second item</li>
-                  <li className="list-group-item">A third item</li>
-                </ul>
-                <div className="card-footer text-muted">
-                  last updated - 2 days ago
-                </div>
+              <div className="nice-ui-container">
+                <h3>Todays Recommendations </h3>
+                <Link to="/recommendation">
+                  <button className="btn btn-secondary">Go</button>
+                </Link>
+              </div>
+              <div className="nice-ui-container">
+                <h3>Calculate your Ecometer results</h3>
+                <Link to="/dashboard">
+                  <button className="btn btn-secondary">Click Here</button>
+                </Link>
+              </div>
+              <div className="nice-ui-container">
+                <h3>Create your virtual Avatar</h3>
+                <Link to="/map">
+                  <button className="btn btn-secondary">Click Here</button>
+                </Link>
               </div>
             </div>
           </div>

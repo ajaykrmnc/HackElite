@@ -13,7 +13,10 @@ import OutfitRecommendation from "./Components/Reccomendation/OutfitRecommendati
 import Home from "./Components/Front/Home";
 import Footer from "Components/Footer";
 import Header from "Components/Header/Header";
-
+import Profile from "Components/Profile/profile";
+import MeshBen from "Components/Benifits/MeshBen";
+import AvatarCreator from "Components/NewComp/Fetch";
+import MeshOption from "Components/Avatar/Option";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -28,7 +31,7 @@ function App() {
           path="/"
           element={
             <>
-              <Header />
+              <Header user = {currentUser}/>
               <div className = "Down">
                 <Outlet />
               </div>
@@ -77,8 +80,35 @@ function App() {
               </RequireAuth>
             }
           />
+           <Route
+            path="/profile"
+            element={
+              <RequireAuth>
+                <Profile user = {currentUser}/>
+              </RequireAuth>
+            }
+          />
+           <Route
+            path="/meshben"
+            element={
+              <RequireAuth>
+                <MeshBen user = {currentUser}/>
+              </RequireAuth>
+            }
+          />
+          <Route
+            path = "/createAvatar"
+            element = {
+              <MeshOption />
+            }
+          />
         </Route>
         <Route path="/auth" element={<Signin />} />
+        <Route path = "/fetch" element = {<AvatarCreator/>}/>
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />} // This will redirect to "/"
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -16,6 +16,7 @@ function Header({user}) {
   const Navigate=useNavigate();
   const {dispatch} = useContext(AuthContext)
   const handleLogout=(e)=>{
+      console.log(user);
       dispatch({type:"LOGOUT", payload:user})
   }
   const handleLogin=(e)=>{
@@ -49,8 +50,8 @@ function Header({user}) {
             <Link to="/beauty" className="links">
               Beauty
             </Link>
-            <Link to="/singlepage" className="links">
-              Single Page
+            <Link to="/meshben" className="links">
+              Avatar Benifits
             </Link>
           </div>
           {/* Navbar ends */}
@@ -61,9 +62,9 @@ function Header({user}) {
                 <Row>
                 <Col xs="auto">
                     <Form.Control
-                    type="text"
-                    placeholder="Search"
-                    className=" mr-sm-2"
+                      type="text"
+                      placeholder="Search"
+                      className=" mr-sm-2"
                     />
                 </Col>
                 </Row>
@@ -81,9 +82,15 @@ function Header({user}) {
             <DropdownButton id="dropdown-light-button" variant = "light" title={<FontAwesomeIcon icon={faUser} />}>
                 <Dropdown.Item href="/map">Mesh</Dropdown.Item>
                 <Dropdown.Item href="/closet">Closet</Dropdown.Item>
-                <Dropdown.Item href="/">Profile</Dropdown.Item>
+                <Dropdown.Item href="/profile">Profile</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                {
+                      (user === null) ? <>
+                         <Dropdown.Item onClick={handleLogin}>Login</Dropdown.Item>
+                      </> : <>
+                          <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                       </> 
+                }
             </DropdownButton>
             </div>
             <div

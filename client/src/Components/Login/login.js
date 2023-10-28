@@ -3,7 +3,8 @@ import { signInWithEmailAndPassword,createUserWithEmailAndPassword,signInWithPop
 import { auth,provider } from "fireboss";
 import { useNavigate } from "react-router-dom";
 import {AuthContext} from "context/AuthContext"
-import { Google } from "react-bootstrap-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import "./style.css"
 
 const Login = () => {
@@ -174,7 +175,7 @@ const Login = () => {
             </button>
             <div className="py-2">
             <button className="mt-3 p-0 btn btn-light" onClick={switchMode}>
-                { isSignup ? 'Already have an account? Sign in' : "New to Battex? Sign Up" }
+                { isSignup ? 'Already have an account? Sign in' : "New to Myntra Verse? Sign Up" }
             </button>
             </div>
           </form>
@@ -184,8 +185,7 @@ const Login = () => {
               <div>
                 <p classNmae = "text-center">-- Or Sign in With --</p>
                 <button className="btn btn-primary p-2 text-white mt-2 d-flex align-items-center" onClick={googleLogin}>
-                  <Google />&nbsp;Google 
-
+                <FontAwesomeIcon icon={faGoogle} /> &nbsp; Google
                 </button>
               </div>
           }

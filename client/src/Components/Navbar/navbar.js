@@ -57,9 +57,14 @@ const Navbar = () => {
                     />
                   </button>
                   <div className="d-flex align-items-center">
-                  <button onClick={handleLogout} className="btn btn-light">
-                      Logout &nbsp;
-                    </button>
+                    {
+                      (user != NULL) ? <><button onClick={handleLogout} className="btn btn-light">
+                           Logout &nbsp;
+                       </button></> : <>
+                        
+                       </>
+                    }
+            
                     &nbsp;<img src={user.photoURL} className="aadmi" alt="..." />
                   </div>
                 </div>

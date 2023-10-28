@@ -130,25 +130,7 @@ const Wardrobe = ({ currentUser }) => {
                   currentUser={currentUser}
                 />
               </div>
-              <div className="nice-ui-container">
-                <h3>Todays Recommendations </h3>
-                <Link to="/recommendation">
-                  <button className="btn btn-secondary">Go</button>
-                </Link>
               </div>
-              <div className="nice-ui-container">
-                <h3>Calculate your Ecometer results</h3>
-                <Link to="/dashboard">
-                  <button className="btn btn-secondary">Click Here</button>
-                </Link>
-              </div>
-              <div className="nice-ui-container">
-                <h3>Create your virtual Avatar</h3>
-                <Link to="/map">
-                  <button className="btn btn-secondary">Click Here</button>
-                </Link>
-              </div>
-            </div>
           </div>
           <div className="col-lg-3">
               <Sidebar tags={tags} handleTagClick={handleTagClick} />

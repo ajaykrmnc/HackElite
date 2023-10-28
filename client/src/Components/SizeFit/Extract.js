@@ -12,7 +12,7 @@ const renderer = new THREE.WebGLRenderer();
 
 const MeshComponent = ({width,height}) => {
   const containerRef = useRef();
-
+  
   const [objData, setObjData] = useState(null);
   const options = {
     method: 'GET',
@@ -103,7 +103,9 @@ const MeshComponent = ({width,height}) => {
 
   return <>
      {
-       (objData) ? <div className = "Mesh" ref={containerRef} /> : <MeshSkeleton/>
+       (objData) ? <div className = "Mesh" ref={containerRef} 
+
+       /> : <MeshSkeleton/>
      }
   </>;
 };
