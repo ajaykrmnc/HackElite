@@ -1,247 +1,1052 @@
-import React, { useEffect } from 'react';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
-import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-const MyComponent = () => {
-  useEffect(() => {
-    let scene, camera;
-    let mesh;
-    let raycaster;
-    let line;
-
-    const intersection = {
-      intersects: false,
-      point: new THREE.Vector3(),
-      normal: new THREE.Vector3(),
-    };
-    const mouse = new THREE.Vector2();
-    const intersects = [];
-
-    const textureLoader = new THREE.TextureLoader();
-    const decalDiffuse = textureLoader.load('decal-diffuse.png');
-    decalDiffuse.encoding = THREE.sRGBEncoding;
-    const decalNormal = textureLoader.load('decal-normal.jpg');
-
-    const decalMaterial = new THREE.MeshPhongMaterial({
-      specular: 0x444444,
-      map: decalDiffuse,
-      normalMap: decalNormal,
-      normalScale: new THREE.Vector2(1, 1),
-      shininess: 30,
-      transparent: true,
-      depthTest: true,
-      depthWrite: false,
-      polygonOffset: true,
-      polygonOffsetFactor: -4,
-      wireframe: false,
-    });
-
-    const decals = [];
-    let mouseHelper;
-    const position = new THREE.Vector3();
-    const orientation = new THREE.Euler();
-    const size = new THREE.Vector3(10, 10, 10);
-
-    const params = {
-      minScale: 10,
-      maxScale: 20,
-      rotate: true,
-      clear: function () {
-        removeDecals();
+{
+  "items": [
+    {
+      "asset_id": "81d2503e-758a-11ee-a846-e2f8eea9c3c7",
+      "username": "ajaykg6917@gmail.com",
+      "purchased": false,
+      "asset_type": "measurement",
+      "filename": "oct_28_1736.zip",
+      "state": "pending",
+      "created_at": "2023-10-28T12:03:05.340419+00:00",
+      "updated_at": "2023-10-28T12:07:03.904571+00:00",
+      "parameters": {
+        "compatibility_mode": "default",
+        "input_units": "cm",
+        "gender": "male",
+        "output_format": "obj",
+        "output_pose": "a",
+        "render_output_preview": true,
+        "output_filename": "oct_28_1736.zip",
+        "symmetrize": "off",
+        "resolution": "medium"
       },
-    };
-
-    function init() {
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.getElementById('container').appendChild(renderer.domElement);
-
-
-      scene = new THREE.Scene();
-
-      camera = new THREE.PerspectiveCamera(
-        45,
-        window.innerWidth / window.innerHeight,
-        1,
-        1000
-      );
-      camera.position.z = 120;
-
-      const controls = new OrbitControls(camera, renderer.domElement);
-      controls.minDistance = 50;
-      controls.maxDistance = 200;
-
-      scene.add(new THREE.AmbientLight(0x666666));
-
-      const dirLight1 = new THREE.DirectionalLight(0xffddcc, 3);
-      dirLight1.position.set(1, 0.75, 0.5);
-      scene.add(dirLight1);
-
-      const dirLight2 = new THREE.DirectionalLight(0xccccff, 3);
-      dirLight2.position.set(-1, 0.75, -0.5);
-      scene.add(dirLight2);
-
-      const geometry = new THREE.BufferGeometry();
-      geometry.setFromPoints([
-        new THREE.Vector3(),
-        new THREE.Vector3(),
-      ]);
-
-      line = new THREE.Line(geometry, new THREE.LineBasicMaterial());
-      scene.add(line);
-
-      loadLeePerrySmith();
-
-      raycaster = new THREE.Raycaster();
-
-      mouseHelper = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 10),
-        new THREE.MeshNormalMaterial()
-      );
-      mouseHelper.visible = false;
-      scene.add(mouseHelper);
-
-      window.addEventListener('resize', onWindowResize);
-
-      let moved = false;
-
-      controls.addEventListener('change', function () {
-        moved = true;
-      });
-
-      window.addEventListener('pointerdown', function () {
-        moved = false;
-      });
-
-      window.addEventListener('pointerup', function (event) {
-        if (moved === false) {
-          checkIntersection(event.clientX, event.clientY);
-
-          if (intersection.intersects) shoot();
+      "estimated_completion": "2023-10-28T12:27:03.904571+00:00"
+    },
+    {
+      "asset_id": "f3a226c2-7589-11ee-a846-e2f8eea9c3c7",
+      "username": "ajaykg6917@gmail.com",
+      "purchased": true,
+      "asset_type": "measurement",
+      "filename": "avatar.zip",
+      "state": "pending",
+      "created_at": "2023-10-28T12:03:05.340419+00:00",
+      "updated_at": "2023-10-28T12:03:05.687078+00:00",
+      "parameters": {
+        "output_units": "cm",
+        "input_units": "cm",
+        "gender": "male",
+        "output_format": "obj",
+        "output_filename": "avatar.zip",
+        "include_metadata": true,
+        "resolution": "medium",
+        "measurements": {
+          "Hip circumference": 130,
+          "Height": 180,
+          "Chest circumference at maximum": 109
         }
-      });
-
-      window.addEventListener('pointermove', onPointerMove);
-
-      function onPointerMove(event) {
-        if (event.isPrimary) {
-          checkIntersection(event.clientX, event.clientY);
-        }
+      },
+      "estimated_completion": "2023-10-28T12:23:05.687078+00:00"
+    },
+    {
+      "asset_id": "a85b52e4-7587-11ee-aa1f-8e5ab2a1335e",
+      "username": "ajaykg6917@gmail.com",
+      "purchased": true,
+      "asset_type": "measurement",
+      "filename": "avatar.zip",
+      "state": "pending",
+      "created_at": "2023-10-28T11:46:40.051980+00:00",
+      "updated_at": "2023-10-28T11:46:40.414694+00:00",
+      "parameters": {
+        "output_units": "cm",
+        "input_units": "cm",
+        "gender": "male",
+        "output_format": "obj",
+        "output_filename": "avatar.zip",
+        "include_metadata": true,
+        "resolution": "medium"
+      },
+      "estimated_completion": "2023-10-28T12:06:40.414694+00:00"
+    },
+    {
+      "asset_id": "b142a7fc-757f-11ee-8a88-a6bd35c3f35d",
+      "username": "ajaykg6917@gmail.com",
+      "purchased": false,
+      "asset_type": "measurement",
+      "filename": "oct_28_1159.zip",
+      "state": "pending",
+      "created_at": "2023-10-28T10:49:39.013736+00:00",
+      "updated_at": "2023-10-28T10:49:39.029890+00:00",
+      "parameters": {
+        "compatibility_mode": "default",
+        "input_units": "cm",
+        "gender": "male",
+        "output_format": "obj",
+        "output_pose": "a",
+        "render_output_preview": true,
+        "output_filename": "oct_28_1159.zip",
+        "symmetrize": "off",
+        "resolution": "medium"
+      },
+      "estimated_completion": "2023-10-28T11:09:39.029890+00:00"
+    },
+    {
+      "asset_id": "b1fef984-6e95-11ee-8dfd-5aed23c41842",
+      "username": "ajaykg6917@gmail.com",
+      "purchased": false,
+      "asset_type": "measurement",
+      "filename": "oct_19_2109.zip",
+      "state": "ready",
+      "created_at": "2023-10-19T15:39:31.038127+00:00",
+      "updated_at": "2023-10-19T15:42:41.769172+00:00",
+      "filesize": 4119176,
+      "parameters": {
+        "compatibility_mode": "default",
+        "input_units": "cm",
+        "gender": "male",
+        "output_format": "obj",
+        "output_pose": "a",
+        "render_output_preview": true,
+        "output_filename": "oct_19_2109.zip",
+        "symmetrize": "off",
+        "resolution": "medium"
+      },
+      "info": {
+        "updated_at": "2023-10-19T15:39:31.052622+00:00",
+        "trans_parameters": [
+          0,
+          0,
+          0
+        ],
+        "asset_type": "measurement",
+        "created_at": "2023-10-19T15:39:31.038127+00:00",
+        "pose_parameters": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shape_parameters": [
+          -0.027157056595610022,
+          0.0308726778411572,
+          0.03285477741730314,
+          -0.02172882481853623,
+          0.022978574648840233,
+          -0.00204654893562151,
+          -0.0025407255385776397,
+          0.01317350113518479,
+          -0.0030777893617714488,
+          -0.00292704054141256,
+          -0.04023105426412489,
+          -0.010781757452909166,
+          -0.011959712199888804,
+          -0.010783359876413559,
+          0.0039885153617967226,
+          0.027579508840122034,
+          -0.02300029387773371,
+          0.016620373283330814,
+          -0.0019243971793591976,
+          0.01376461153547176,
+          0.013659031169759724,
+          -0.0059600331442702425,
+          -0.0057749271239750785,
+          0.009625087784861439,
+          0.027612229079799846,
+          -0.0219073295638737,
+          -0.02294867803432788,
+          -0.011397848755621968,
+          0.00189653037717042,
+          0.033609011470375025,
+          0.04424407427768799,
+          0.009240703840148119,
+          0.012603653290996476,
+          0.0347253793516154,
+          0.037414991345950305,
+          -0.03046280035282829,
+          -0.0749463758249955,
+          -0.030555952354341748,
+          -0.011333186096666722,
+          -0.004703847680620417,
+          -0.02063728658243885,
+          0.035561277381373574,
+          0.01124864162003552,
+          -0.0002462620729548354,
+          -0.005306536739739681,
+          -0.0060704415765388525,
+          -0.006481490786087718,
+          -0.023236721519632207,
+          -0.027514239178845046,
+          0.019455287131696395,
+          0.006304538690651,
+          -0.003734246646262796,
+          -0.007121405334082192,
+          -0.010757998758116814,
+          -0.027503073758084477,
+          0.01792881094529093,
+          -0.02042133049939744,
+          0.025398314435347246,
+          -0.0007592738333798175,
+          -0.00698592777202844,
+          -0.0185174115853816,
+          -0.015940883275700993,
+          -0.010072062435952609,
+          0.0054021257133100116,
+          0.004849321320155401,
+          -0.019836993770377304,
+          0.02446625743545621,
+          -0.0039374996339251135,
+          0.034791656884444105,
+          0.003794490736467321,
+          -0.014725079890459784,
+          0.03855524393538185,
+          -0.003718671963283741,
+          0.01073594981701243,
+          -0.01061898560069628,
+          0.02633250099435441,
+          0.04164392163826303,
+          -0.009882623982767702,
+          -0.01490599608368446,
+          -0.03500349026940288,
+          0.0019194403186793385,
+          0.035818977852109066,
+          0.019248879534820646,
+          -0.041053698653972244,
+          0.02809177303231479,
+          0.001741876203415975,
+          0.027432481081333875,
+          -0.004939370464330962,
+          -0.0032789411163624623,
+          -0.026698199270047098,
+          -0.010345757431654657,
+          -0.006180089861392529,
+          -0.00703657411279094,
+          -0.006278396646543647,
+          0.024426817941581008,
+          0.033104062841234294,
+          -0.007667012860240763,
+          0.009420928678590637,
+          -0.03358152917132553,
+          0.0037844356179118654,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "asset_id": "b1fef984-6e95-11ee-8dfd-5aed23c41842",
+        "body_measurements": {
+          "from_mesh": {
+            "Neck circumference at base": 50.51,
+            "Waist circumference (preferred)": 93.9,
+            "Hip height": 89.84,
+            "Waist height (preferred)": 106.27,
+            "Arm length (shoulder to elbow)": 31.74,
+            "Chest circumference at scye": 108.87,
+            "Shoulder breadth": 49.04,
+            "Crotch length": 68.48,
+            "Arm length (shoulder to wrist)": 58.09,
+            "Foot length": 26.65,
+            "Hip circumference": 103,
+            "Inseam": 81.98,
+            "Ankle circumference": 26.36,
+            "Thigh circumference": 61.45,
+            "Arm circumference at scye": 51.5,
+            "Height": 179.75,
+            "Chest circumference at maximum": 105.9,
+            "Arm length (spine to wrist)": 80.07
+          }
+        },
+        "version": "ganymede-0.32.2",
+        "parameters": {
+          "compatibility_mode": "default",
+          "input_units": "cm",
+          "gender": "male",
+          "output_format": "obj",
+          "output_pose": "a",
+          "render_output_preview": true,
+          "output_filename": "oct_19_2109.zip",
+          "symmetrize": "off",
+          "resolution": "medium"
+        },
+        "username": "ajaykg6917@gmail.com"
+      },
+      "preview_obj_url": "https://meshcapade-digidoppelprod-ganymede-assets.s3.eu-central-1.amazonaws.com/digidoppelprod/b1fef984-6e95-11ee-8dfd-5aed23c41842/base/b1fef984-6e95-11ee-8dfd-5aed23c41842.preview_obj",
+      "download_preview_obj": {
+        "url": "https://meshcapade-digidoppelprod-ganymede-assets.s3.amazonaws.com/digidoppelprod/b1fef984-6e95-11ee-8dfd-5aed23c41842/base/b1fef984-6e95-11ee-8dfd-5aed23c41842.preview_obj?response-content-disposition=attachment%3B%20filename%3Doct_19_2109.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAUOXRLEJTL2QSXCHU%2F20231028%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20231028T130134Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH0aDGV1LWNlbnRyYWwtMSJIMEYCIQDLTTnyMaBORo%2F5%2B4gjQa5Z4rDCDPG8g%2BRKR0FiKAdQQQIhAKGE7ESfJK%2F6PCeu7JC2LdsOVHu%2Bqi7122iAeth18Wo6KrUDCKb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzA2NTIyNTYzMTc0IgzS7vzF%2BBZWYio5y%2FMqiQNQ%2FB2QD9nvAZHV5ya17MroNfWWHey1WMky5aEaRWHa%2FD0TKuuW%2BrM1pCxMCiI5xOCE5Mxxr8CWZRQUwxrTnQ%2BvPpIS4GzTwVFx3YnK0IK5uxH86w%2FZSSLu6XcH%2BisT95yWBEAi%2FuTdKwY15cXlsIhrUN5J1lxo%2FVVZ7%2BqUKvCXqilGzZ7IV4XFNFWKXtsEn5HD%2Fp4%2FkdTPMLRrxPX%2B1LEMEJXlL1p9fe2BzVwqz%2BhK7c8FGmjAO7XC5BOLKBiBiDLahQPUkhsp%2BmAXgb8Q0CEHdZTHy1%2BnLu5FQtdlbNNzANdFRE%2BSDuunLFRlSngv6XfZ61StXZO3m4zgBWpckYGIIIxlYcncTaga5a31dnZeR9FFCG%2BMKwNyAbAwVBRW1%2FBmLEYsW43ctWVAy4OkToiIELtY3%2FGcdgO1ak0LWH5VfJthIgYJ4nhcfmsxNz2Xd5l5XOGORoqKd1Nqw3yV1R2d1vVoEWa53jfjflBbPuPGntYxoPuxdSgBQBekQw22ynOO4CMDMyQySE4w6PzzqQY6nAHOaAPshk8SLlDx8XC0ePxyzQ0uBAxYzDDGA0VPGnxeDkHT4SVzt7CFrso5PNzetXazzHnvT69FFuTPTHIMiQzbILOOuOjFRtXUIWiRu%2BLjAmsOQ39dQaoyz%2FQFVOOcfELfIF6RSBnjsNyeI%2F41VLqUBP1dXuIcfa26q%2Bgu%2FEZnAS6HzSoJl2f9VlkplBeN20zaFvXJIMgvr6vdD6g%3D&X-Amz-Signature=99640b33e1d96ee445e36c1f2dd37a0c13aaa47835738648bf7cfde0e23ff618",
+        "expires_in": 600
+      },
+      "download_preview_texture": {
+        "url": "https://meshcapade-digidoppelprod-ganymede-assets.s3.amazonaws.com/digidoppelprod/b1fef984-6e95-11ee-8dfd-5aed23c41842/base/b1fef984-6e95-11ee-8dfd-5aed23c41842.preview_texture?response-content-disposition=attachment%3B%20filename%3Doct_19_2109.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAUOXRLEJTL2QSXCHU%2F20231028%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20231028T130134Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH0aDGV1LWNlbnRyYWwtMSJIMEYCIQDLTTnyMaBORo%2F5%2B4gjQa5Z4rDCDPG8g%2BRKR0FiKAdQQQIhAKGE7ESfJK%2F6PCeu7JC2LdsOVHu%2Bqi7122iAeth18Wo6KrUDCKb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzA2NTIyNTYzMTc0IgzS7vzF%2BBZWYio5y%2FMqiQNQ%2FB2QD9nvAZHV5ya17MroNfWWHey1WMky5aEaRWHa%2FD0TKuuW%2BrM1pCxMCiI5xOCE5Mxxr8CWZRQUwxrTnQ%2BvPpIS4GzTwVFx3YnK0IK5uxH86w%2FZSSLu6XcH%2BisT95yWBEAi%2FuTdKwY15cXlsIhrUN5J1lxo%2FVVZ7%2BqUKvCXqilGzZ7IV4XFNFWKXtsEn5HD%2Fp4%2FkdTPMLRrxPX%2B1LEMEJXlL1p9fe2BzVwqz%2BhK7c8FGmjAO7XC5BOLKBiBiDLahQPUkhsp%2BmAXgb8Q0CEHdZTHy1%2BnLu5FQtdlbNNzANdFRE%2BSDuunLFRlSngv6XfZ61StXZO3m4zgBWpckYGIIIxlYcncTaga5a31dnZeR9FFCG%2BMKwNyAbAwVBRW1%2FBmLEYsW43ctWVAy4OkToiIELtY3%2FGcdgO1ak0LWH5VfJthIgYJ4nhcfmsxNz2Xd5l5XOGORoqKd1Nqw3yV1R2d1vVoEWa53jfjflBbPuPGntYxoPuxdSgBQBekQw22ynOO4CMDMyQySE4w6PzzqQY6nAHOaAPshk8SLlDx8XC0ePxyzQ0uBAxYzDDGA0VPGnxeDkHT4SVzt7CFrso5PNzetXazzHnvT69FFuTPTHIMiQzbILOOuOjFRtXUIWiRu%2BLjAmsOQ39dQaoyz%2FQFVOOcfELfIF6RSBnjsNyeI%2F41VLqUBP1dXuIcfa26q%2Bgu%2FEZnAS6HzSoJl2f9VlkplBeN20zaFvXJIMgvr6vdD6g%3D&X-Amz-Signature=ccae0ee12a1874e3d1a61b8e73f8292916a59ba7db708b1b9deed29501c402cf",
+        "expires_in": 600
       }
-
-      function checkIntersection(x, y) {
-        if (mesh === undefined) return;
-
-        mouse.x = (x / window.innerWidth) * 2 - 1;
-        mouse.y = -(y / window.innerHeight) * 2 + 1;
-
-        raycaster.setFromCamera(mouse, camera);
-        raycaster.intersectObject(mesh, false, intersects);
-
-        if (intersects.length > 0) {
-          const p = intersects[0].point;
-          mouseHelper.position.copy(p);
-          intersection.point.copy(p);
-
-          const n = intersects[0].face.normal.clone();
-          n.transformDirection(mesh.matrixWorld);
-          n.multiplyScalar(10);
-          n.add(intersects[0].point);
-
-          intersection.normal.copy(intersects[0].face.normal);
-          mouseHelper.lookAt(n);
-
-          const positions = line.geometry.attributes.position;
-          positions.setXYZ(0, p.x, p.y, p.z);
-          positions.setXYZ(1, n.x, n.y, n.z);
-          positions.needsUpdate = true;
-
-          intersection.intersects = true;
-
-          intersects.length = 0;
-        } else {
-          intersection.intersects = false;
+    },
+    {
+      "asset_id": "92f617f8-6ab1-11ee-b06a-ca2badaa6df2",
+      "username": "ajaykg6917@gmail.com",
+      "purchased": true,
+      "asset_type": "measurement",
+      "filename": "oct_14_2214.zip",
+      "state": "ready",
+      "created_at": "2023-10-14T16:49:00.229736+00:00",
+      "updated_at": "2023-10-14T16:51:30.599844+00:00",
+      "filesize": 4117242,
+      "parameters": {
+        "compatibility_mode": "default",
+        "input_units": "cm",
+        "gender": "male",
+        "output_format": "obj",
+        "output_pose": "a",
+        "render_output_preview": true,
+        "output_filename": "oct_14_2214.zip",
+        "symmetrize": "off",
+        "resolution": "medium",
+        "measurements": {
+          "Height": 172,
+          "Waist circumference (preferred)": 90,
+          "Chest circumference at maximum": 89,
+          "Inseam": 80
         }
+      },
+      "info": {
+        "updated_at": "2023-10-14T16:49:00.242340+00:00",
+        "trans_parameters": [
+          0,
+          0,
+          0
+        ],
+        "asset_type": "measurement",
+        "created_at": "2023-10-14T16:49:00.229736+00:00",
+        "pose_parameters": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shape_parameters": [
+          1.1939173304525603,
+          0.5719694522361183,
+          1.0798527040569796,
+          -0.5447775717423422,
+          0.1810547066051269,
+          -0.5996204013293222,
+          0.07838841188078105,
+          0.41200407029823793,
+          0.9024321822555295,
+          -0.9950507282956527,
+          -1.101942101892062,
+          0.5839644710574441,
+          1.3796372261876018,
+          0.1397084449465904,
+          -0.008916675395221452,
+          -0.1023349164420482,
+          -0.01557578149789618,
+          -0.347339824770156,
+          0.5067999319889374,
+          -0.02696050526156596,
+          -0.4398376818562455,
+          0.1968536448877945,
+          0.32462326998467006,
+          -0.3694202609826981,
+          0.1117506829910973,
+          0.21716962792366212,
+          0.05142875965753779,
+          0.34188340155489294,
+          -0.14545769154310667,
+          -0.1446537949880613,
+          -0.05176803412733977,
+          -0.01716767071308889,
+          -0.1906420678266132,
+          -0.18223527076045798,
+          0.05594152144865698,
+          -0.22636722203407456,
+          -0.3131234938963005,
+          0.1077162711932731,
+          -0.4544528898713811,
+          0.042526474345980225,
+          -0.21129904485347656,
+          0.01979083608235585,
+          -0.13052034910104338,
+          -0.3672286928563877,
+          -0.14818920869335417,
+          0.08997731005193493,
+          0.18833468808015752,
+          -0.04914165224858538,
+          -0.05465160027536076,
+          0.14568938985202817,
+          -0.2651443418836742,
+          -0.054411538517654276,
+          0.018776693774528213,
+          -0.11472254190289731,
+          -0.09449586720027137,
+          0.014203812989030007,
+          -0.03371852278743531,
+          0.01595153159334084,
+          -0.023790388556496185,
+          -0.05523897974685854,
+          -0.13357408640549284,
+          -0.035115896630168564,
+          -0.06154470129695888,
+          0.17046139242135117,
+          0.06595503379374794,
+          -0.05833454564875272,
+          -0.03315956346308635,
+          -0.05682189661638745,
+          0.08333589210966286,
+          -0.059041155375399945,
+          0.28918219796974887,
+          0.12988034760332196,
+          -0.08913107753665878,
+          0.08532529226703955,
+          -0.014792458266463235,
+          -0.12048762113669881,
+          0.11968999429768179,
+          0.05279481854808621,
+          0.017480557609602126,
+          0.07461656478068465,
+          0.025284865741522555,
+          0.03565815073017109,
+          0.05840823402382464,
+          -0.023165747117588682,
+          -0.07926100305032369,
+          -0.03306085842092993,
+          0.09878339103617328,
+          -0.0898090928157455,
+          0.05080103674229114,
+          0.03763276793493256,
+          -0.052582583493828314,
+          0.11975218798127324,
+          0.08733514373460075,
+          -0.16786377871061536,
+          0.02012729196297669,
+          -0.10522678814102421,
+          0.09091265157184025,
+          0.10894495165644069,
+          0.042330949144953,
+          0.04446478189782754,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "asset_id": "92f617f8-6ab1-11ee-b06a-ca2badaa6df2",
+        "body_measurements": {
+          "from_mesh": {
+            "Neck circumference at base": 46.32,
+            "Waist circumference (preferred)": 88.8,
+            "Hip height": 84.31,
+            "Waist height (preferred)": 105.3,
+            "Arm length (shoulder to elbow)": 29.72,
+            "Chest circumference at scye": 95.78,
+            "Shoulder breadth": 44.63,
+            "Crotch length": 73.72,
+            "Arm length (shoulder to wrist)": 54.78,
+            "Foot length": 25.36,
+            "Hip circumference": 98.43,
+            "Inseam": 77.87,
+            "Ankle circumference": 25.56,
+            "Thigh circumference": 58.31,
+            "Arm circumference at scye": 47.6,
+            "Height": 172.28,
+            "Chest circumference at maximum": 92.11,
+            "Arm length (spine to wrist)": 75.23
+          }
+        },
+        "version": "ganymede-0.32.2",
+        "parameters": {
+          "compatibility_mode": "default",
+          "input_units": "cm",
+          "gender": "male",
+          "output_format": "obj",
+          "output_pose": "a",
+          "render_output_preview": true,
+          "output_filename": "oct_14_2214.zip",
+          "symmetrize": "off",
+          "resolution": "medium",
+          "measurements": {
+            "Height": 172,
+            "Waist circumference (preferred)": 90,
+            "Chest circumference at maximum": 89,
+            "Inseam": 80
+          }
+        },
+        "username": "ajaykg6917@gmail.com"
+      },
+      "preview_obj_url": "https://meshcapade-digidoppelprod-ganymede-assets.s3.eu-central-1.amazonaws.com/digidoppelprod/92f617f8-6ab1-11ee-b06a-ca2badaa6df2/base/92f617f8-6ab1-11ee-b06a-ca2badaa6df2.preview_obj",
+      "download": {
+        "url": "https://meshcapade-digidoppelprod-ganymede-assets.s3.amazonaws.com/digidoppelprod/92f617f8-6ab1-11ee-b06a-ca2badaa6df2/base/92f617f8-6ab1-11ee-b06a-ca2badaa6df2?response-content-disposition=attachment%3B%20filename%3Doct_14_2214.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAUOXRLEJTL2QSXCHU%2F20231028%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20231028T130135Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH0aDGV1LWNlbnRyYWwtMSJIMEYCIQDLTTnyMaBORo%2F5%2B4gjQa5Z4rDCDPG8g%2BRKR0FiKAdQQQIhAKGE7ESfJK%2F6PCeu7JC2LdsOVHu%2Bqi7122iAeth18Wo6KrUDCKb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzA2NTIyNTYzMTc0IgzS7vzF%2BBZWYio5y%2FMqiQNQ%2FB2QD9nvAZHV5ya17MroNfWWHey1WMky5aEaRWHa%2FD0TKuuW%2BrM1pCxMCiI5xOCE5Mxxr8CWZRQUwxrTnQ%2BvPpIS4GzTwVFx3YnK0IK5uxH86w%2FZSSLu6XcH%2BisT95yWBEAi%2FuTdKwY15cXlsIhrUN5J1lxo%2FVVZ7%2BqUKvCXqilGzZ7IV4XFNFWKXtsEn5HD%2Fp4%2FkdTPMLRrxPX%2B1LEMEJXlL1p9fe2BzVwqz%2BhK7c8FGmjAO7XC5BOLKBiBiDLahQPUkhsp%2BmAXgb8Q0CEHdZTHy1%2BnLu5FQtdlbNNzANdFRE%2BSDuunLFRlSngv6XfZ61StXZO3m4zgBWpckYGIIIxlYcncTaga5a31dnZeR9FFCG%2BMKwNyAbAwVBRW1%2FBmLEYsW43ctWVAy4OkToiIELtY3%2FGcdgO1ak0LWH5VfJthIgYJ4nhcfmsxNz2Xd5l5XOGORoqKd1Nqw3yV1R2d1vVoEWa53jfjflBbPuPGntYxoPuxdSgBQBekQw22ynOO4CMDMyQySE4w6PzzqQY6nAHOaAPshk8SLlDx8XC0ePxyzQ0uBAxYzDDGA0VPGnxeDkHT4SVzt7CFrso5PNzetXazzHnvT69FFuTPTHIMiQzbILOOuOjFRtXUIWiRu%2BLjAmsOQ39dQaoyz%2FQFVOOcfELfIF6RSBnjsNyeI%2F41VLqUBP1dXuIcfa26q%2Bgu%2FEZnAS6HzSoJl2f9VlkplBeN20zaFvXJIMgvr6vdD6g%3D&X-Amz-Signature=256b00fa087b9c832b1eed062a5d58fecc1d7162ae866498c5910de8ac535ab3",
+        "expires_in": 600
+      },
+      "download_preview_obj": {
+        "url": "https://meshcapade-digidoppelprod-ganymede-assets.s3.amazonaws.com/digidoppelprod/92f617f8-6ab1-11ee-b06a-ca2badaa6df2/base/92f617f8-6ab1-11ee-b06a-ca2badaa6df2.preview_obj?response-content-disposition=attachment%3B%20filename%3Doct_14_2214.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAUOXRLEJTL2QSXCHU%2F20231028%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20231028T130135Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH0aDGV1LWNlbnRyYWwtMSJIMEYCIQDLTTnyMaBORo%2F5%2B4gjQa5Z4rDCDPG8g%2BRKR0FiKAdQQQIhAKGE7ESfJK%2F6PCeu7JC2LdsOVHu%2Bqi7122iAeth18Wo6KrUDCKb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzA2NTIyNTYzMTc0IgzS7vzF%2BBZWYio5y%2FMqiQNQ%2FB2QD9nvAZHV5ya17MroNfWWHey1WMky5aEaRWHa%2FD0TKuuW%2BrM1pCxMCiI5xOCE5Mxxr8CWZRQUwxrTnQ%2BvPpIS4GzTwVFx3YnK0IK5uxH86w%2FZSSLu6XcH%2BisT95yWBEAi%2FuTdKwY15cXlsIhrUN5J1lxo%2FVVZ7%2BqUKvCXqilGzZ7IV4XFNFWKXtsEn5HD%2Fp4%2FkdTPMLRrxPX%2B1LEMEJXlL1p9fe2BzVwqz%2BhK7c8FGmjAO7XC5BOLKBiBiDLahQPUkhsp%2BmAXgb8Q0CEHdZTHy1%2BnLu5FQtdlbNNzANdFRE%2BSDuunLFRlSngv6XfZ61StXZO3m4zgBWpckYGIIIxlYcncTaga5a31dnZeR9FFCG%2BMKwNyAbAwVBRW1%2FBmLEYsW43ctWVAy4OkToiIELtY3%2FGcdgO1ak0LWH5VfJthIgYJ4nhcfmsxNz2Xd5l5XOGORoqKd1Nqw3yV1R2d1vVoEWa53jfjflBbPuPGntYxoPuxdSgBQBekQw22ynOO4CMDMyQySE4w6PzzqQY6nAHOaAPshk8SLlDx8XC0ePxyzQ0uBAxYzDDGA0VPGnxeDkHT4SVzt7CFrso5PNzetXazzHnvT69FFuTPTHIMiQzbILOOuOjFRtXUIWiRu%2BLjAmsOQ39dQaoyz%2FQFVOOcfELfIF6RSBnjsNyeI%2F41VLqUBP1dXuIcfa26q%2Bgu%2FEZnAS6HzSoJl2f9VlkplBeN20zaFvXJIMgvr6vdD6g%3D&X-Amz-Signature=6bbd63e90478fbeec6663d7a64d374df98c1e63446ddd892152f02d1b42e9b64",
+        "expires_in": 600
+      },
+      "download_preview_texture": {
+        "url": "https://meshcapade-digidoppelprod-ganymede-assets.s3.amazonaws.com/digidoppelprod/92f617f8-6ab1-11ee-b06a-ca2badaa6df2/base/92f617f8-6ab1-11ee-b06a-ca2badaa6df2.preview_texture?response-content-disposition=attachment%3B%20filename%3Doct_14_2214.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAUOXRLEJTL2QSXCHU%2F20231028%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20231028T130135Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH0aDGV1LWNlbnRyYWwtMSJIMEYCIQDLTTnyMaBORo%2F5%2B4gjQa5Z4rDCDPG8g%2BRKR0FiKAdQQQIhAKGE7ESfJK%2F6PCeu7JC2LdsOVHu%2Bqi7122iAeth18Wo6KrUDCKb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzA2NTIyNTYzMTc0IgzS7vzF%2BBZWYio5y%2FMqiQNQ%2FB2QD9nvAZHV5ya17MroNfWWHey1WMky5aEaRWHa%2FD0TKuuW%2BrM1pCxMCiI5xOCE5Mxxr8CWZRQUwxrTnQ%2BvPpIS4GzTwVFx3YnK0IK5uxH86w%2FZSSLu6XcH%2BisT95yWBEAi%2FuTdKwY15cXlsIhrUN5J1lxo%2FVVZ7%2BqUKvCXqilGzZ7IV4XFNFWKXtsEn5HD%2Fp4%2FkdTPMLRrxPX%2B1LEMEJXlL1p9fe2BzVwqz%2BhK7c8FGmjAO7XC5BOLKBiBiDLahQPUkhsp%2BmAXgb8Q0CEHdZTHy1%2BnLu5FQtdlbNNzANdFRE%2BSDuunLFRlSngv6XfZ61StXZO3m4zgBWpckYGIIIxlYcncTaga5a31dnZeR9FFCG%2BMKwNyAbAwVBRW1%2FBmLEYsW43ctWVAy4OkToiIELtY3%2FGcdgO1ak0LWH5VfJthIgYJ4nhcfmsxNz2Xd5l5XOGORoqKd1Nqw3yV1R2d1vVoEWa53jfjflBbPuPGntYxoPuxdSgBQBekQw22ynOO4CMDMyQySE4w6PzzqQY6nAHOaAPshk8SLlDx8XC0ePxyzQ0uBAxYzDDGA0VPGnxeDkHT4SVzt7CFrso5PNzetXazzHnvT69FFuTPTHIMiQzbILOOuOjFRtXUIWiRu%2BLjAmsOQ39dQaoyz%2FQFVOOcfELfIF6RSBnjsNyeI%2F41VLqUBP1dXuIcfa26q%2Bgu%2FEZnAS6HzSoJl2f9VlkplBeN20zaFvXJIMgvr6vdD6g%3D&X-Amz-Signature=47646f0ab21969b92f3dc020a6f8001868f4f86084e9383403104d432baf6a3a",
+        "expires_in": 600
       }
-
-      const gui = new GUI();
-
-      gui.add(params, 'minScale', 1, 30);
-      gui.add(params, 'maxScale', 1, 30);
-      gui.add(params, 'rotate');
-      gui.add(params, 'clear');
-      gui.open();
     }
-
-    function loadLeePerrySmith() {
-      
-      const specularMap = textureLoader.load(
-        'Map-SPEC.jpg'
-      );
-      const normalMap = textureLoader.load(
-        'Infinite-Level_02_Tangent_SmoothUV.jpg'
-      );
-      const map = textureLoader.load('path_to_your_texture.jpg', function (texture) {
-        texture.TextureEncoding = THREE.SRGBColorSpace;
-      });
-      const loader = new GLTFLoader();
-
-      loader.load('LeePerrySmith.glb', function (
-        gltf
-      ) {
-        mesh = gltf.scene.children[0];
-        mesh.material = new THREE.MeshPhongMaterial({
-          specular: 0x111111,
-          map: map,
-          specularMap: specularMap,
-          normalMap: normalMap,
-          shininess: 25,
-        });
-
-        scene.add(mesh);
-        mesh.scale.set(10, 10, 10);
-      });
-    }
-
-    function shoot() {
-        //   
-    }
-
-    function removeDecals() {
-      decals.forEach(function (d) {
-        scene.remove(d);
-      });
-
-      decals.length = 0;
-    }
-
-    function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    function animate() {
-      requestAnimationFrame(animate);
-
-      renderer.render(scene, camera);
-
-    }
-
-    init();
-    animate();
-
-    return () => {
-      // Clean up code (if any) when the component is unmounted
-    };
-  }, []);
-
-  return <div id="container" />;
-};
-
-export default MyComponent;
+  ],
+  "count": 6
+}

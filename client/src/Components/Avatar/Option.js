@@ -9,18 +9,22 @@ const MeshOption = () =>{
     return (
         <>
             <div className = "main container">
-                <h4>Create a new avatar</h4>
-                <div className = "Options">
-                    <Link to = "/map" className = "img1">
-                        <img  src = {img3} />
-                    </Link>
-                    <Link to = "/map" className = "img2">
-                        <img  src = {img1} />
-                    </Link>
-                    <Link to = "/map" className = "img3">
-                        <img  src = {img2} />
-                    </Link>
-
+                <div className = "">
+                    <h2>Create a new avatar</h2>
+                        <div className = "Options">
+                            <Link to = "/map" className = "img1">
+                                <img  src = {img3} />
+                                <h3>From Measurement</h3>
+                            </Link>
+                            <Link to = "/map" className = "img2">
+                                <img  src = {img1} />
+                                <h3>From Image</h3>
+                            </Link>
+                            <Link to = "/map" className = "img3">
+                                <img  src = {img2} />
+                                <h3>From Scans</h3>
+                            </Link>
+                    </div>
                 </div>
             </div>
         </>

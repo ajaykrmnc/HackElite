@@ -35,23 +35,23 @@ function Header({user}) {
 
           {/* Navbar starts */}
           <div className="navbar">
-            <Link to="/man" className="links">
+            <Link to="/Closet" className="links">
               Man
             </Link>
-            <Link to="/women" className="links">
-              Women
+            <Link to="/ecometer" className="links">
+              Ecometer
             </Link>
-            <Link to="/kids" className="links">
-              Kids
+            <Link to="/createAvatar" className="links">
+              createAvatar
             </Link>
-            <Link to="/homeandliving" className="links">
-              Home & Livings
-            </Link>
-            <Link to="/beauty" className="links">
-              Beauty
+            <Link to="/recommendation" className="links">
+              Reccomendation
             </Link>
             <Link to="/meshben" className="links">
-              Avatar Benifits
+              Textures
+            </Link>
+            <Link to="/fetch" className="links">
+              Benifits
             </Link>
           </div>
           {/* Navbar ends */}

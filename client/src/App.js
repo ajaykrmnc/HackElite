@@ -15,8 +15,11 @@ import Footer from "Components/Footer";
 import Header from "Components/Header/Header";
 import Profile from "Components/Profile/profile";
 import MeshBen from "Components/Benifits/MeshBen";
-import AvatarCreator from "Components/NewComp/Fetch";
+import AvatarCreator from "Components/NewComp/fromImage";
 import MeshOption from "Components/Avatar/Option";
+import MeshMeasure from "Components/NewComp/fromMeasure";
+import Menu from "Components/Zomato/Menu";
+import EcoMeter from "Components/Ecometer/ecometer";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -65,10 +68,13 @@ function App() {
             }
           />
           <Route
-            path="/dashboard"
+            path="/ecometer"
             element={
               <RequireAuth>
+                <>
+                <EcoMeter/>
                 <Dashboard />
+                </>
               </RequireAuth>
             }
           />
@@ -105,6 +111,9 @@ function App() {
         </Route>
         <Route path="/auth" element={<Signin />} />
         <Route path = "/fetch" element = {<AvatarCreator/>}/>
+        <Route path = "/measure" element = {<MeshMeasure/>}/>
+        <Route path = "/menu" element = {<Menu/>}/>
+
         <Route
           path="*"
           element={<Navigate to="/" replace />} // This will redirect to "/"
