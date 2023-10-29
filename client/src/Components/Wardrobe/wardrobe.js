@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Posts from "../Posts/Posts";
+import Posts from "./Posts/Posts";
 import "./stylehome.css";
 import Form from "../Form/Form";
 import axios from "axios";
-import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "./Sidebar/Sidebar";
 import { Link } from "react-router-dom";
 
 const Wardrobe = ({ currentUser }) => {
-  const url = "http://localhost:5000/posts";
+  const url = "https://hackelite.up.railway.app/posts";
   const [posts, setPosts] = useState([]);
-  const [tags, setTags] = useState([]);
-  const [tops, setTops] = useState([]);
-  const [bottoms, setBottoms] = useState([]);
-  const [accessories, setAccessories] = useState([]); // Define tags state
+  const [tags, setTags] = useState([]); 
+  const [view, switchView] = useState(false);// Define tags state
   const TagSearch = () => {
     const [tags, setTags] = useState("");
     const [searchResults, setSearchResults] = useState([]);
@@ -79,68 +77,61 @@ const Wardrobe = ({ currentUser }) => {
       }
     };
     fetchData();
-  }, []);
-  useEffect(() => {
-    setTops([]);
-    setBottoms([]);
-    setAccessories([]);
-    const categorizePosts = () => {
-      posts.forEach((post) => {
-        if (post.category === "tops") {
-          setTops((prevTops) => [...prevTops, post]);
-        } else if (post.category === "bottoms") {
-          setBottoms((prevBottoms) => [...prevBottoms, post]);
-        } else if (post.category === "accessories") {
-          setAccessories((prevAccessories) => [...prevAccessories, post]);
-        }
-      });
-    };
-    categorizePosts();
-  }, [posts]);
+  }, [view]);
+  const [cloth, setCloth] = useState('tops');
+  const cateogries = {
+    items: ['tops','bottoms','accessories']
+  }
+  const switchCateogries = (e) =>{
+     setCloth(e);
+  }
+
   return (
     <>
-      <div className="container">
+      <div className="container wardrobe">
+      <h1 className = "m-2">Wardrobe</h1>
+      <hr className = "text-muted"/>
         <div className="row">
-          <div className="col">
-            <div className="posts-side">
-              <div className="tops">
-                <h3 className="text-primary">Tops</h3>
-                <hr />
-                <Posts
-                  posts={tops}
-                  deletepost={deletePost}
-                  currentUser={currentUser}
-                />
-              </div>
-              <div className="bottoms">
-                <h3 className="text-primary">Bottoms</h3>
-                <hr />
-                <Posts
-                  posts={bottoms}
-                  deletepost={deletePost}
-                  currentUser={currentUser}
-                />
-              </div>
-              <div className="accessories">
-                <h3 className="text-primary">Accessories</h3>
-                <hr />
-                <Posts
-                  posts={accessories}
-                  deletepost={deletePost}
-                  currentUser={currentUser}
-                />
-              </div>
-              </div>
+        <div className = "col-lg-3">
+            <div className = "cloth-types">
+              {
+                cateogries.items.map((item) => 
+                  <button className = "btn " onClick = {() => {setCloth(item)}}>{item}</button>
+                )
+              }
+            </div>
+            <Sidebar tags={tags} handleTagClick={handleTagClick} />
+            <button className = "btn btn-primary" onClick = {() => switchView(!view)}>{(view) ? "Add Items to wardrobe" : "View the wardrobe"}</button>
           </div>
-          <div className="col-lg-3">
-              <Sidebar tags={tags} handleTagClick={handleTagClick} />
-              <Form addpost={addPost} currentUser={currentUser} />
+          <div className="col-lg-9">
+            <div className="">
+            <div className = "cloths">
+                { view && <>
+                    {
+                      posts ?  
+                        <Posts
+                          posts = {posts}
+                          cloth={cloth}
+                          deletepost={deletePost}
+                          currentUser={currentUser}
+                        /> : <>
+
+                      </>
+                    } 
+                </>
+                }
+                {
+                  !view && <>
+                    <div className="col">
+                      <Form addpost={addPost} currentUser={currentUser} />
+                    </div>
+                  </>
+                }
+            </div>
             </div>
           </div>
-          <div>
-
         </div>
-      </div>
+       </div> 
     </>
   );
 };

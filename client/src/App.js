@@ -18,8 +18,8 @@ import MeshBen from "Components/Benifits/MeshBen";
 import AvatarCreator from "Components/NewComp/fromImage";
 import MeshOption from "Components/Avatar/Option";
 import MeshMeasure from "Components/NewComp/fromMeasure";
-import Menu from "Components/Zomato/Menu";
 import EcoMeter from "Components/Ecometer/ecometer";
+import FinalCom from "Components/SizeFit2/Page";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -112,7 +112,7 @@ function App() {
         <Route path="/auth" element={<Signin />} />
         <Route path = "/fetch" element = {<AvatarCreator/>}/>
         <Route path = "/measure" element = {<MeshMeasure/>}/>
-        <Route path = "/menu" element = {<Menu/>}/>
+        <Route path = "/final" element = {<FinalCom/>}/>
 
         <Route
           path="*"
