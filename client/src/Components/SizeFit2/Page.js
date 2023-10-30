@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import MeshComponent from './Extract';
 import axios from 'axios';
+import './page.css'
 import { TOKEN } from 'config';
 const BASE = "https://api.meshcapade.com/api";
 
@@ -97,12 +98,12 @@ function FinalCom() {
     <>
     <div className="container">
       <div className = 'row'>
-        <div className="col">
+        <div className="col-lg-9">
             <MeshComponent url = {url} width={650} height={486}/>
         </div>
-        <div className="col">
+        <div className="col-lg-3">
             <h3>Measurement Avatar Configuration</h3>
-            <div>
+            <div className = "size-form">
                 <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                 <label htmlFor="gender" className="form-label">Select Gender:</label>
@@ -188,8 +189,7 @@ function FinalCom() {
             { 
                 <pre>{JSON.stringify(response3?.data.attributes.state, null, 2)}</pre>
             }
-            {response2 && <button className = "btn btn-primary" onClick = {exportAvatar}>Download Avatar</button>}
-            {url && <h3>{url}</h3>}
+            {response3 && <button className = "btn btn-primary" onClick = {exportAvatar}>Download Avatar</button>}
         </div>
       </div>
     </div>

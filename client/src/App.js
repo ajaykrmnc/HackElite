@@ -8,7 +8,6 @@ import { useContext } from "react";
 import './App.css'
 import Combined from "./Components/SizeFit/Combined";
 import Intro from "./Intro";
-import Dashboard from "./Components/Dashboard/Dashboard";
 import OutfitRecommendation from "./Components/Reccomendation/OutfitRecommendation";
 import Home from "./Components/Front/Home";
 import Footer from "Components/Footer";
@@ -55,7 +54,7 @@ function App() {
             path="/map"
             element={
               <RequireAuth>
-                <Combined />
+                <FinalCom />
               </RequireAuth>
             }
           />
@@ -73,7 +72,6 @@ function App() {
               <RequireAuth>
                 <>
                 <EcoMeter/>
-                <Dashboard />
                 </>
               </RequireAuth>
             }
@@ -112,7 +110,7 @@ function App() {
         <Route path="/auth" element={<Signin />} />
         <Route path = "/fetch" element = {<AvatarCreator/>}/>
         <Route path = "/measure" element = {<MeshMeasure/>}/>
-        <Route path = "/final" element = {<FinalCom/>}/>
+        <Route path = "/map" element = {<Combined/>}/>
 
         <Route
           path="*"

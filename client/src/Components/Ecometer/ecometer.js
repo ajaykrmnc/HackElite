@@ -3,9 +3,11 @@ import './Ecometer.css'; // Make sure you have the CSS file for styling
 import eco from 'assets/Ecometer/eco.png'
 import eco2 from 'assets/Ecometer/eco2.png'
 import eco3 from 'assets/Ecometer/eco3.png'
+import Dashboard from './Dashboard';
 
 const EcoMeter = () => {
     const [currentImage, setCurrentImage] = useState(0);
+    const [view, switchView] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -32,12 +34,14 @@ const EcoMeter = () => {
                     <h1 className="overlay-text text-dark">Eco Meter</h1>
                     <h5>Get to know your contribiution to the environment, engage in eco-friendly choices, for the future.</h5>
                     <h5>Shop without the guilt, Shop Freely.</h5>
+                    <button className = "btn-success rounded">Calculate your Ecometer Score</button>
                 </div>
             </div>
             <div className='container'>
-                <h2>Our Idea</h2>
-                <div className='ideas'>
-                    <div className="card">
+                <h2 className = 'm-4 text-bold'>Our Idea</h2>
+                <hr/>
+                <div className='ideas row'>
+                    <div className="card col m-4">
                         <img className="card-img-top" src={eco} alt="Card image cap" />
                         <div className="card-body">
                             <h4>EcoMeter Score</h4>
@@ -46,7 +50,7 @@ const EcoMeter = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="card">
+                    <div className="card col m-4">
                         <img className="card-img-top" src={eco2} alt="Card image cap" />
                         <div className="card-body">
                             <h4>Wardrobe Sustainability</h4>
@@ -55,7 +59,7 @@ const EcoMeter = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="card">
+                    <div className="card col m-4">
                         <img className="card-img-top" src={eco3} alt="Card image cap" />
                         <div className="card-body">
                             <h4>Sustainability Reports</h4>
@@ -66,11 +70,8 @@ const EcoMeter = () => {
                     </div>
                 </div>
                 <br />
-                <h2>Calculate Your Cloth's Rating</h2>
-
-                <h2>Your Rating</h2>
-
             </div>
+            <Dashboard />
 
         </div>
     );

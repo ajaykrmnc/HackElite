@@ -53,9 +53,6 @@ function Header({user}) {
             <Link to="/fetch" className="links">
               Benifits
             </Link>
-            <Link to="/final" className="links">
-              Final
-            </Link>
           </div>
           {/* Navbar ends */}
 

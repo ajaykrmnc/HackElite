@@ -1,37 +1,33 @@
-.recommendation {
+
+.image-container {
+  position: relative;
+  max-width: 100%;
+}
+
+.mystyle {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.overlay {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%; 
+  background: white;/* Adjust this value to control the height of the overlay */
+}
+.items {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin: 20px; /* Added margin */
-  padding: 20px; /* Added padding */
-  background-color: #fff; /* White background */
 }
-.recommendation-bar{
-  align-items: center;
-  gap: 20px;
-  margin: 20px; /* Added margin */
-  padding: 20px; /* Added padding */
-  border: 2px solid #ccc; /* Added border for visual separation */
-  border-radius: 10px; /* Rounded corners */
-  background-color: #fff; /* White background */
+.item img {
+   width : 200px;
+   margin: 0px 20px 0px;
+   border-radius: 10px;
 }
-.recommendation-title {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.item {
+.item p {
   text-align: center;
-}
-
-.recommendation img {
-  max-width: 200px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h3 {
-  font-size: 18px;
-  margin-top: 10px;
 }

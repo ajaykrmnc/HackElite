@@ -1,29 +1,31 @@
 import React from 'react';
 import './OutfitRecommendation.css';
 import { Link } from 'react-router-dom';
+import mystyle from 'assets/Myntra/Mystylist.jpeg'
 
 const OutfitRecommendation = () => {
   return (
     <>
-    
-    <div className="recommendation-bar">
-    <h2 className="recommendation-title">Recommendation</h2>
-    <div className = "recommendation">
+    <img src = {mystyle} className = "mystyle" />
+    <div className = "recommendation container">
+      <h2 className="recommendation-title m-3 ">Recommendation</h2>
+      <hr/>
+      <div className="items">
       <div className="item">
           <img src="shirt.jpg" alt="Shirt" />
-          <h3>Stylish Shirt</h3>
+          <p>Stylish Shirt</p>
         </div>
         <div className="item">
           <img src="pants.jpg" alt="Pants" />
-          <h3>Comfy Pants</h3>
+          <p>Comfy Pants</p>
         </div>
         <div className="item">
           <img src="accessory.jpg" alt="Accessory" />
-          <h3>Cool Accessory</h3>
+          <p>Cool Accessory</p>
         </div>
     </div>
     <div>
-      <Link to="/"> <button className = "btn btn-dark">Back to Home</button></Link>
+    <Link to="/"> <button className = "btn btn-dark">Back to Home</button></Link>
     </div>
     </div>
     </>

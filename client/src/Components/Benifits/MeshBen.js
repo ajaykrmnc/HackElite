@@ -39,28 +39,32 @@ const MeshBen = () => {
         </div>
       </div>
       <div className = 'container shop'>
-          <h2>Try on Model</h2>
-          <div className = 'shopimg'>
-            <div>
-              <img src = {img22} />
-            </div>
-            <div>
-              <img src = {img21} />
-            </div>
-            <div>
-              <img src = {img41} />
+          <div>
+            <h2>Try on Model</h2>
+            <div className = "shopimg">
+              <div>
+                <img src = {img22} />
+              </div>
+              <div>
+                <img src = {img21} />
+              </div>
+              <div>
+                <img src = {img41} />
+              </div>
             </div>
           </div>
           <h2>Shop by style</h2>
-          <div className = 'shopimg'>
-            <div>
-              <img src = {img33} />
-            </div>
-            <div>
-              <img src = {img31} />
-            </div>
-            <div>
-              <img src = {img41} />
+          <div >
+            <div className = 'shopimg'>
+              <div>
+                <img src = {img33} />
+              </div>
+              <div>
+                <img src = {img31} />
+              </div>
+              <div>
+                <img src = {img41} />
+              </div>
             </div>
         </div>
         </div>

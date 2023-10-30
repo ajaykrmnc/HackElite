@@ -4,6 +4,9 @@
     position: relative;
     overflow: hidden;
 }
+.ecometer {
+    background: rgb(246,255,250)
+}
 
 .ecometer .top-bar img {
     position: absolute;
@@ -19,13 +22,18 @@
 
 .ideas {
     display: flex;
+    justify-content: center;
+    background: rgb(246,255,250)
 }
-.ecometer .card {
-    width: 17rem;
+.ideas div {
+    max-width: 20rem;
 }
 .top-bar img.visible {
     opacity: 1;
 }
+/* .ecometer .card {
+    background: rgb(242,253,245)
+} */
 
 .overlay-text-bar {
     position: absolute;
@@ -36,28 +44,4 @@
     margin: 0;
     text-align: left;
     color: rgb(255, 255, 255);
-}
-.ecometer .overlay-text-bar h1 {
-    color: white;
-    margin: 0;
-    font-size: 2.4rem;
-    text-align: left;
-}
-.ecometer .overlay-text-bar h5 {
-    font-weight: lighter;
-}
-.shopimg {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-.shopimg {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-.shopimg img {
-    width: 20rem;
-    border-radius: 10px;
-    margin: 10px;
 }
