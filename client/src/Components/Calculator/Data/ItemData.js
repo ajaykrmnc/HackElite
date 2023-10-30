@@ -11,6 +11,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '1.png'
   },
   {
     item: "Recycled Polyester Jacket",
@@ -24,6 +25,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '2.png'
   },
   {
     item: "Conventional Cotton Jeans",
@@ -37,6 +39,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '3.png'
   },
   {
     item: "Organic Cotton Shirt",
@@ -50,6 +53,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '4.png'
   },
   {
     item: "Recycled Denim Jacket",
@@ -63,6 +67,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '5.png'
   },
   {
     item: "Bamboo Fiber Leggings",
@@ -76,6 +81,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '6.png'
   },
   {
     item: "Hemp Canvas Backpack",
@@ -89,6 +95,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '7.png'
   },
   {
     item: "Linen Blouse",
@@ -102,6 +109,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '8.png'
   },
   {
     item: "Tencel Dress",
@@ -115,6 +123,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '9.png'
   },
   {
     item: "Silk Scarf",
@@ -128,6 +137,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '10.png'
   },
   {
     item: "Wool Socks",
@@ -141,6 +151,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '11.png'
   },
   {
     item: "Denim Skirt",
@@ -154,6 +165,7 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '12.png'
   },
   {
     item: "Cotton Shorts",
@@ -167,5 +179,6 @@ export const ItemData = [
     weight_labor_conditions: 20,
     weight_packaging_transportation: 15,
     weight_end_of_life: 10,
+    imgSrc: '13.png'
   },
 ];

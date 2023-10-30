@@ -29,7 +29,7 @@ function Header({user}) {
         <div className="header">
           <div className="logo">
             <Link to="/">
-              <img src={Logo} alt="Logo" width="50" />
+              <img src={Logo} alt="Logo" width="60" />
             </Link>
           </div>
 

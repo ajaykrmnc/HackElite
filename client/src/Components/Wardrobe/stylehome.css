@@ -1,10 +1,7 @@
 /* homepage-style.css */
-
 .wardrobe {
-    height: 100vh;
+    margin-bottom: 100px;
 }
-
-
 .cloths {
     display: flex;
     justify-content: center;

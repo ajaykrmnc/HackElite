@@ -1,5 +1,5 @@
 .cardi {
-  width: 18rem; /* Adjust the width of each card */
+  width: 14rem; /* Adjust the width of each card */
   margin: 0.2rem; 
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -8,9 +8,10 @@
 
 .card-img {
   max-width: 100%;
-  max-height: 280px;
+  max-height: 160px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  object-fit: cover;
 }
 
 .card-img-overlay {

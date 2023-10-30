@@ -102,23 +102,25 @@ function ViewList() {
         const updatedScores = ItemData.map((item) => calculateCategoryScore(item));
         setScores(updatedScores);
     },[])
-    function calculatePercentage() {
+    const calculatePercentage = () => {
         const totalScore = scores.reduce((sum, score) => sum + score, 0);
         const maxPossibleScore = ItemData.length * 485; // Assuming each item has max score of 100
         return ((totalScore / maxPossibleScore) * 100).toFixed(2);
-    }      
+    }  
+    const [view, setView] = useState(false);    
     const handleCalculate = () =>{
-
+        setView(true);
     }
   return (
     <div className="container mb-4">
       <h2 className = "m-2">Ecometer Calculation</h2>
       <hr className = "text-muted" />
       {ItemData.map((item, index) => (<>
-        <SustainabilityCard key={index} item={item} score = {calculateCategoryScore(item)}/>
+            <SustainabilityCard key={index} item={item} score = {calculateCategoryScore(item)}/>
         </>
         ))}
-      <button className = "btn-success rounded">Calculate Overall</button>
+      <button className = "btn-success rounded" onClick = {handleCalculate}>Calculate Overall</button>
+      {view && <button className = "btn-success rounded">{calculatePercentage()}%</button>}
     </div>
   );
 }

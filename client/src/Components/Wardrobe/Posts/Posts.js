@@ -5,16 +5,20 @@ import './styles.css';
 const Posts = ({ posts, cloth , deletepost, currentUser }) => {
   const postList = (posts || []).map((post)=> (
     (post.category == cloth) && 
-    <div className="post-wrapper" key={post._id}>
+    <div className="col-md-3 mb-4" key={post._id}>
       <Post
-        details = {post}
+        details={post}
         deletepost={deletepost}
         currentUser={currentUser}
       />
     </div>
   ));
 
-  return <div className="posts-container">{postList}</div>;
+  return (
+    <div className="row">
+      {postList}
+    </div>
+  );
 };
 
 export default Posts;

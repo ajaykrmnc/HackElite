@@ -93,7 +93,7 @@ const Wardrobe = ({ currentUser }) => {
       <h1 className = "m-2">Wardrobe</h1>
       <hr className = "text-muted"/>
         <div className="row">
-        <div className = "col-lg-3">
+          <div className = "col-lg-3">
             <div className = "cloth-types">
               {
                 cateogries.items.map((item) => 
@@ -105,8 +105,6 @@ const Wardrobe = ({ currentUser }) => {
             <button className = "btn btn-primary" onClick = {() => switchView(!view)}>{(view) ? "Add Items to wardrobe" : "View the wardrobe"}</button>
           </div>
           <div className="col-lg-9">
-            <div className="">
-            <div className = "cloths">
                 { view && <>
                     {
                       posts ?  
@@ -128,8 +126,6 @@ const Wardrobe = ({ currentUser }) => {
                     </div>
                   </>
                 }
-            </div>
-            </div>
           </div>
         </div>
        </div> 
