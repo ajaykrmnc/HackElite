@@ -97,12 +97,13 @@ function FinalCom() {
   return (
     <>
     <div className="container">
+    <h2 className = "m-2">Measurement Avatar Configuration</h2>
+    <hr/>
       <div className = 'row'>
-        <div className="col-lg-9">
+        <div className="col w-75">
             <MeshComponent url = {url} width={650} height={486}/>
         </div>
-        <div className="col-lg-3">
-            <h3>Measurement Avatar Configuration</h3>
+        <div className="col w-25">
             <div className = "size-form">
                 <form onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -189,7 +190,7 @@ function FinalCom() {
             { 
                 <pre>{JSON.stringify(response3?.data.attributes.state, null, 2)}</pre>
             }
-            {response3 && <button className = "btn btn-primary" onClick = {exportAvatar}>Download Avatar</button>}
+            {<button className = "btn btn-primary" onClick = {exportAvatar}>Download Avatar</button>}
         </div>
       </div>
     </div>

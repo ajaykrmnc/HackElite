@@ -67,11 +67,11 @@ const AvatarCreator = () => {
     const fitToDetail = async () => {
         try {
             const response = await axios.post(`${BASE}/v1/avatars/${assetId}/fit-to-images`, {
-                avatarname: 'Gupta',
-                height: 172,
-                weight: 75,
-                gender: 'FEMALE'
-            }, {
+              "avatarname": "AvatarName",
+              "height":180,
+              "weight": 85,
+              "gender":"female"
+          }, {
                 headers: {
                 'Authorization': `Bearer ${TOKEN}`,
                 'Content-Type': 'application/json'

@@ -36,7 +36,7 @@ function Header({user}) {
           {/* Navbar starts */}
           <div className="navbar">
             <Link to="/Closet" className="links">
-              Man
+              Closet
             </Link>
             <Link to="/ecometer" className="links">
               Ecometer

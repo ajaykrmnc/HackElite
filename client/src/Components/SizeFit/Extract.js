@@ -27,6 +27,7 @@ const MeshComponent = ({width,height}) => {
     const fetchObjData = async () => {
       try {
         const response = await axios.request(options);
+
         const data = response.data;
         const url = data.download_preview_obj.url;
         // const url = "https://s3.eu-central-1.amazonaws.com/mcme-prod-assets/mcme/47727403-41c2-4425-92b9-c74bffa08583/287da9c4-02de-412a-a852-c7ba741e3915?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUOXRLEJTMWLKGAKM%2F20231029%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20231029T161103Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&x-id=GetObject&X-Amz-Signature=8c35d8b58a2442ec32870ad315d180ce8457b94873705f3f88b9b72ec7fa2fe4";
@@ -35,6 +36,7 @@ const MeshComponent = ({width,height}) => {
         setObjData((response2.data));
         console.log(typeof (response2.data));
       } catch (error) {
+        console.log(MESH);
         console.error('Error fetching OBJ data:', error);
       }
     };
@@ -58,8 +60,8 @@ const MeshComponent = ({width,height}) => {
 
       const loader = new OBJLoader();
       const objMesh = loader.parse(objData);
-      objMesh.scale.set(60, 60, 60);
-      objMesh.position.set(1, -50, 0);
+      objMesh.scale.set(0.4, 0.4, 0.4);
+      objMesh.position.set(1, -30, 0);
       console.log('Current Position:', objMesh.position.x, objMesh.position.y, objMesh.position.z);
 
       const material = new THREE.MeshStandardMaterial({ color: 0xffffff }); // Use MeshStandardMaterial for more realistic shading

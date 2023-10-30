@@ -19,6 +19,7 @@ import MeshOption from "Components/Avatar/Option";
 import MeshMeasure from "Components/NewComp/fromMeasure";
 import EcoMeter from "Components/Ecometer/ecometer";
 import FinalCom from "Components/SizeFit2/Page";
+import CalulatorEco from "Components/Calculator/calculator";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -106,11 +107,17 @@ function App() {
               <MeshOption />
             }
           />
+          <Route
+            path = "/calc"
+            element = {
+              <CalulatorEco />
+            }
+          />
         </Route>
         <Route path="/auth" element={<Signin />} />
         <Route path = "/fetch" element = {<AvatarCreator/>}/>
         <Route path = "/measure" element = {<MeshMeasure/>}/>
-        <Route path = "/map" element = {<Combined/>}/>
+        <Route path = "/demo" element = {<Combined/>}/>
 
         <Route
           path="*"

@@ -5,9 +5,10 @@ import Form from "../Form/Form";
 import axios from "axios";
 import Sidebar from "./Sidebar/Sidebar";
 import { Link } from "react-router-dom";
+import { backend } from "config";
 
 const Wardrobe = ({ currentUser }) => {
-  const url = "https://hackelite.up.railway.app/posts";
+  const url = backend;
   const [posts, setPosts] = useState([]);
   const [tags, setTags] = useState([]); 
   const [view, switchView] = useState(false);// Define tags state
@@ -21,7 +22,7 @@ const Wardrobe = ({ currentUser }) => {
     const handleSearch = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.get(`{url}/tags=${tags}`);
+        const response = await axios.get(`${url}/tags=${tags}`);
         setSearchResults(response.data);
       } catch (error) {
         console.error("Error fetching search results:", error);

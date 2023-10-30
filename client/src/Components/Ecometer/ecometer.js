@@ -4,6 +4,7 @@ import eco from 'assets/Ecometer/eco.png'
 import eco2 from 'assets/Ecometer/eco2.png'
 import eco3 from 'assets/Ecometer/eco3.png'
 import Dashboard from './Dashboard';
+import { Link } from 'react-router-dom';
 
 const EcoMeter = () => {
     const [currentImage, setCurrentImage] = useState(0);
@@ -34,7 +35,9 @@ const EcoMeter = () => {
                     <h1 className="overlay-text text-dark">Eco Meter</h1>
                     <h5>Get to know your contribiution to the environment, engage in eco-friendly choices, for the future.</h5>
                     <h5>Shop without the guilt, Shop Freely.</h5>
+                    <Link to = "/calc"> 
                     <button className = "btn-success rounded">Calculate your Ecometer Score</button>
+                    </Link>
                 </div>
             </div>
             <div className='container'>
