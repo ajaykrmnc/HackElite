@@ -6,12 +6,13 @@ import axios from "axios";
 import Sidebar from "./Sidebar/Sidebar";
 import { Link } from "react-router-dom";
 import { backend } from "config";
+import PostLoad from "Components/Loading/PostLoad";
 
 const Wardrobe = ({ currentUser }) => {
   const url = backend;
   const [posts, setPosts] = useState([]);
   const [tags, setTags] = useState([]); 
-  const [view, switchView] = useState(false);// Define tags state
+  const [view, switchView] = useState(true);// Define tags state
   const TagSearch = () => {
     const [tags, setTags] = useState("");
     const [searchResults, setSearchResults] = useState([]);
@@ -29,11 +30,26 @@ const Wardrobe = ({ currentUser }) => {
       }
     };
   };
+  const [clickedTags, setClickedTags] = useState([]);
+
+  // ...
+
   const handleTagClick = async (tag) => {
+    // Check if the tag is already clicked
+    if (clickedTags.includes(tag)) {
+      // If clicked, remove it from the clickedTags array
+      const updatedClickedTags = clickedTags.filter((clickedTag) => clickedTag !== tag);
+      setClickedTags(updatedClickedTags);
+    } else {
+      // If not clicked, add it to the clickedTags array
+      setClickedTags([...clickedTags, tag]);
+    }
+
+    // Make an API request to fetch posts based on the selected tags
     try {
-      // Make an API request to fetch posts based on the selected tag
-      const response = await axios.get(`${url}/posts?tags=${tag}`);
+      const response = await axios.get(`${url}/?tags=${clickedTags.join(",")}`);
       setPosts(response.data);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -101,20 +117,37 @@ const Wardrobe = ({ currentUser }) => {
                 )
               }
             </div>
-            <Sidebar tags={tags} handleTagClick={handleTagClick} />
+              <div className="mt-2">
+                <h3 className="">Tags</h3>
+                <hr/>
+                <div className="">
+                  {tags.map((tag, index) => (
+                    <button key={index} className="btn btn-rounded btn-small btn-primary m-1" onClick={() => handleTagClick(tag)}>
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+                <hr/>
+            </div>
+            <h3>Selected Tags</h3> {
+              clickedTags.map((tag,index) => (
+                <button key = {index} className = "btn btn-primary btn-small btn-rounded m-1" onClick={() => handleTagClick(tag)}>{tag}</button>
+              ))
+            }
+            <hr/>
             <button className = "btn btn-primary" onClick = {() => switchView(!view)}>{(view) ? "Add Items to wardrobe" : "View the wardrobe"}</button>
           </div>
           <div className="col-lg-9">
                 { view && <>
                     {
-                      posts ?  
+                      (posts.length !== 0) ?  
                         <Posts
                           posts = {posts}
                           cloth={cloth}
                           deletepost={deletePost}
                           currentUser={currentUser}
                         /> : <>
-
+                          <PostLoad/>
                       </>
                     } 
                 </>

@@ -84,34 +84,6 @@ export const ItemData = [
     imgSrc: '6.png'
   },
   {
-    item: "Hemp Canvas Backpack",
-    material: "Hemp",
-    production: "Ethical sourcing, low-impact dyeing",
-    labor_conditions: "Fair wages, safe working conditions",
-    packaging_transportation: "Minimal packaging, local sourcing",
-    end_of_life: "Recyclable material, responsible disposal",
-    weight_material: 30,
-    weight_production: 25,
-    weight_labor_conditions: 20,
-    weight_packaging_transportation: 15,
-    weight_end_of_life: 10,
-    imgSrc: '7.png'
-  },
-  {
-    item: "Linen Blouse",
-    material: "Linen",
-    production: "Ethical supply chain, low-impact dyeing",
-    labor_conditions: "Fair wages, safe working conditions",
-    packaging_transportation: "Minimal packaging, local sourcing",
-    end_of_life: "Compostable material, responsible disposal",
-    weight_material: 30,
-    weight_production: 25,
-    weight_labor_conditions: 20,
-    weight_packaging_transportation: 15,
-    weight_end_of_life: 10,
-    imgSrc: '8.png'
-  },
-  {
     item: "Tencel Dress",
     material: "Tencel",
     production: "Low-impact dyeing, ethical supply chain",

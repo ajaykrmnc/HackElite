@@ -2,6 +2,7 @@ import React, { useEffect, useState,useRef } from 'react';
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import img1 from "./texture.jpg"
 import axios from 'axios'
 import { MESH } from '../../config';
 import MeshSkeleton from 'Components/Loading/MeshLoading';
@@ -64,8 +65,16 @@ const MeshComponent = ({width,height}) => {
       objMesh.position.set(1, -30, 0);
       console.log('Current Position:', objMesh.position.x, objMesh.position.y, objMesh.position.z);
 
-      const material = new THREE.MeshStandardMaterial({ color: 0xffffff }); // Use MeshStandardMaterial for more realistic shading
+      // const material = new THREE.MeshStandardMaterial({ color: 0xffffff }); // Use MeshStandardMaterial for more realistic shading
 
+  
+      const textureLoader = new THREE.TextureLoader();
+      const texture = textureLoader.load(img1);
+
+      const material = new THREE.MeshStandardMaterial({
+        map: texture,
+        color: 0xffffff,
+      });
       objMesh.traverse((child) => {
         if (child instanceof THREE.Mesh) {
           child.material = material;

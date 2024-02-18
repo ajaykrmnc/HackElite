@@ -38,24 +38,20 @@ export const getPost= async(req,res)=>{
     }
 
 }
-const getData = async (tags) => {
-    try {
-      const filteredPosts = await Post.find({ tags: { $all: tags } });
-  
-      return filteredPosts;
-    } catch (error) {
-      throw new Error(error.message);
-    }
-};
-export const getPostsByTags = async (req,res) => {
-    const { tags } = req.query;
 
+export const getPostsByTags = async (req, res) => {
+    const { tags } = req.query;
+    console.log(tags)
     // Convert tags to an array if it's a comma-separated string
     const tagList = Array.isArray(tags) ? tags : [tags];
-    const filteredPosts = await getData(tagList);
-    res.json(filteredPosts);
+    
+    try {
+        const filteredPosts = await PostMessage.find({ tags: { $in: tagList } });
+        res.json(filteredPosts);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 };
-
 
 export const deletePost = async(req,res) =>{
     const {id} = req.params;

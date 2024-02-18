@@ -3,6 +3,7 @@ import MeshComponent from './Extract';
 import axios from 'axios';
 import './page.css'
 import { TOKEN } from 'config';
+import SampleMesh from './SampleMesh';
 const BASE = "https://api.meshcapade.com/api";
 
 function FinalCom() {
@@ -17,6 +18,7 @@ function FinalCom() {
   const [response2, setResponse2] = useState(null);
   const [response3, setResponse3] = useState(null);
   const [url, setUrl] = useState(null);
+  const [sample, setSample] = useState(false);
 
   const [assetId,setAssetId] = useState(null);
   const handleUpload = async () => {
@@ -101,7 +103,8 @@ function FinalCom() {
     <hr/>
       <div className = 'row'>
         <div className="col w-75">
-            <MeshComponent url = {url} width={650} height={486}/>
+            <SampleMesh width={650} height={486} />
+            {/* <MeshComponent sample = {sample} url = {url} width={650} height={486}/> */}
         </div>
         <div className="col w-25">
             <div className = "size-form">
@@ -184,13 +187,11 @@ function FinalCom() {
                         <h3>Response: </h3>
                         <button className = "btn btn-primary" onClick = {handleCheck}>Check</button>
                         <pre>{JSON.stringify(response2?.data.attributes.state, null, 2)}</pre>
+                        <pre>{JSON.stringify(response3?.data.attributes.state, null, 2)}</pre>
+                        {<button className = "btn btn-primary" onClick = {exportAvatar}>Download Avatar</button>}
                     </>
                 )
             }
-            { 
-                <pre>{JSON.stringify(response3?.data.attributes.state, null, 2)}</pre>
-            }
-            {<button className = "btn btn-primary" onClick = {exportAvatar}>Download Avatar</button>}
         </div>
       </div>
     </div>

@@ -104,7 +104,7 @@ function ViewList() {
     },[])
     const calculatePercentage = () => {
         const totalScore = scores.reduce((sum, score) => sum + score, 0);
-        const maxPossibleScore = ItemData.length * 485; // Assuming each item has max score of 100
+        const maxPossibleScore = ItemData.length * 465; // Assuming each item has max score of 100
         return ((totalScore / maxPossibleScore) * 100).toFixed(2);
     }  
     const [view, setView] = useState(false);    

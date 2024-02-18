@@ -13,6 +13,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
+console.log(firebaseConfig.apiKey);
 
 export const provider = new GoogleAuthProvider();
 const app = initializeApp(firebaseConfig);

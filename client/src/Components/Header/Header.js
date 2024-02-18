@@ -50,8 +50,8 @@ function Header({user}) {
             <Link to="/meshben" className="links">
               Textures
             </Link>
-            <Link to="/fetch" className="links">
-              Benifits
+            <Link to="/calc" className="links">
+              Calculate
             </Link>
           </div>
           {/* Navbar ends */}
